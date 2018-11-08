@@ -9,9 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>SR Running Online Store</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet" />
-        <script src="js/bootstrap.min.js" />
+        <title>JKT Shop</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet" >
+        <script src="js/bootstrap.min.js"></script>
     </head>
     <body>
         <h1>Hello World!</h1>
