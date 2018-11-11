@@ -27,23 +27,43 @@ insert into account(username,password,firstName,lastName,nickname,sex,phone) val
 ('test@test.com','test','FirstName','LastName','Admin','M','0123456789');
 
 
+/*********************Table structure for table product *********************/
+DROP TABLE  shoe;
+
+CREATE TABLE shoe (
+  shoeId varchar(10) NOT NULL,
+  shoeName varchar(70) NOT NULL,
+  color varchar(15) NOT NULL,
+  shoeType varchar(20) NOT NULL,
+  brand varchar(20) NOT NULL,
+  price int NOT NULL,
+
+  CONSTRAINT shoe_shoeId_pk PRIMARY KEY (shoeId),
+) ;
+
+/*Data for the table product */
+insert  into product(shoeId,shoeName,color,shoeType,brand,price) values 
+('NI001SH200','NikeAir','black','running','nike',3000),
+
+
+
+
 /********************Table structure for table payment ********************/
 
 DROP TABLE payment;
 
 CREATE TABLE payment (
-  customerNumber int NOT NULL,
-  checkNumber varchar(50) NOT NULL,
+  paymentId int NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1001, INCREMENT BY 1),
   paymentDate date NOT NULL,
-  amount decimal(10,2) NOT NULL,
-  PRIMARY KEY (customerNumber,checkNumber),
-  CONSTRAINT payments_ibfk_1 FOREIGN KEY (customerNumber) REFERENCES customer (customerNumber)
+  paymentMethod varchar(20) NOT NULL,
+  paymentAmount decimal(10,2) NOT NULL,
+
+  CONSTRAINT payment_paymentId_pk PRIMARY KEY (paymentId)
 ) ;
 
-/*Data for the table payments */
-
-insert  into payment(customerNumber,checkNumber,paymentDate,amount) values 
-(103,'HQ336336','2004-10-19',6066.78);
+/*Data for the table payment */
+insert into payment(paymentDate,paymentMethod,paymentDate,amount) values 
+('2018-10-14','credit card',5000.50);
 
 
 /*******************Table structure for table order *****************/
@@ -91,36 +111,6 @@ CREATE TABLE productline (
 insert  into productline(productLine,textDescription,htmlDescription,image) values 
 ('Classic Cars','Attention car enthusiasoffice.',NULL,NULL),
 ('Vintage Cars','Our Vintage Car models realistically portray automobile office.',NULL,NULL);
-
-
-/*Table structure for table product */
-
-DROP TABLE  product;
-
-CREATE TABLE product (
-  productCode varchar(15) NOT NULL,
-  productName varchar(70) NOT NULL,
-  productLine varchar(50) NOT NULL,
-  productScale varchar(10) NOT NULL,
-  productVendor varchar(50) NOT NULL,
-  productDescription clob NOT NULL,
-  quantityInStock smallint NOT NULL,
-  buyPrice decimal(10,2) NOT NULL,
-  MSRP decimal(10,2) NOT NULL,
-  PRIMARY KEY (productCode),
-  CONSTRAINT products_ibfk_1 FOREIGN KEY (productLine) REFERENCES productline (productLine)
-) ;
-
-/*Data for the table products */
-
-insert  into product(productCode,productName,productLine,productScale,productVendor,productDescription,quantityInStock,buyPrice,MSRP) values 
-('S10_1678','1969 Harley Davidson Ultimate Chopper','Motorcycles','1:10','Min Lin Diecast','This ttention.',7933,48.81,95.70),
-
-
-
-
-
-
 
 /*Table structure for table orderdetails */
 
