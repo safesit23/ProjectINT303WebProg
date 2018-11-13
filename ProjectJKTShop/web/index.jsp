@@ -9,10 +9,14 @@
 <html>
     <head>
         <jsp:include page="include/header.jsp" />
+        <link href="css/css_jkthomepage.css" rel="stylesheet" >
     </head>
     <body>
         <jsp:include page="include/navbar.jsp"/>
-        <h1>Hello World!</h1>
-        <a class="btn btn-primary" href="login.jsp" role="button">NewLink</a>
+        <div class="container jktcontent">
+            <h1>HOMEPAGE</h1>
+            <div style="height: 800px;"></div>
+        </div>
+        <jsp:include page="include/footer.jsp"/>
     </body>
 </html>
