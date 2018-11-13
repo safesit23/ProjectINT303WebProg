@@ -47,16 +47,17 @@ insert  into shoe(shoeId,shoeName,color,shoeType,shoeType2,brand,price) values
 ('NI001SH200','NikeAir','black','running','MEN','nike',3000);
 
 
-/********************Table structure for table sizestock ********************/
+/********************Table structure for table sizeSpecific ********************/
 DROP TABLE sizeSpecific;
 
 CREATE table sizeSpecific(
   shoeId varchar(10) NOT NULL,
   shoeSize int NOT NULL,
-  CONSTRAINT sizeSpecific_sIdSize_pk PRIMARY KEY (shoeId,shoeSize)
+  CONSTRAINT sizeSpecific_sIdSize_pk PRIMARY KEY (shoeId,shoeSize),
+  CONSTRAINT sizeSpecific_shoeId_fk FOREIGN KEY (shoeId) REFERENCES shoe(shoeId)
 );
 
-/*Data for the table product */
+/*Data for the table sizeSpecific */
 insert into sizeSpecific(shoeId,shoeSize) values
 ('NI001SH200',7),
 ('NI001SH200',9),
