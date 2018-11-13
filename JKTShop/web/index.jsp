@@ -13,6 +13,6 @@
     <body>
         <jsp:include page="include/navbar.jsp"/>
         <h1>Hello World!</h1>
-        <a class="btn btn-primary" href="pages/login.jsp" role="button">Link</a>
+        <a class="btn btn-primary" href="pages/login.jsp" role="button">NewLink</a>
     </body>
 </html>
