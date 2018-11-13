@@ -8,11 +8,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <jsp:include page="../include/header.jsp" />
+        <jsp:include page="include/header.jsp" />
     </head>
     <body>
-        <jsp:include page="../include/navbar.jsp"/>
+        <jsp:include page="include/navbar.jsp"/>
         <h1>Login</h1>
-        <a class="btn btn-primary" href="pages/login.jsp" role="button">TEST LOGIN</a>
+        <a class="btn btn-primary" href="login.jsp" role="button">TEST LOGIN </a>
     </body>
 </html>
