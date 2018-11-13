@@ -31,6 +31,6 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
-
+        <jsp:include page="include/footer.jsp"/>
     </body>
 </html>
