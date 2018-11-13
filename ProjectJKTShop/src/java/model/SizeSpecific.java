@@ -8,6 +8,8 @@ package model;
 import java.io.Serializable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -29,6 +31,9 @@ public class SizeSpecific implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected SizeSpecificPK sizeSpecificPK;
+    @JoinColumn(name = "SHOEID", referencedColumnName = "SHOEID", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Shoe shoe;
 
     public SizeSpecific() {
     }
@@ -47,6 +52,14 @@ public class SizeSpecific implements Serializable {
 
     public void setSizeSpecificPK(SizeSpecificPK sizeSpecificPK) {
         this.sizeSpecificPK = sizeSpecificPK;
+    }
+
+    public Shoe getShoe() {
+        return shoe;
+    }
+
+    public void setShoe(Shoe shoe) {
+        this.shoe = shoe;
     }
 
     @Override

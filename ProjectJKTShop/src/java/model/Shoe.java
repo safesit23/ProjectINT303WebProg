@@ -77,6 +77,8 @@ public class Shoe implements Serializable {
     private int price;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "shoe")
     private List<OrderDetail> orderDetailList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "shoe")
+    private List<SizeSpecific> sizeSpecificList;
 
     public Shoe() {
     }
@@ -158,6 +160,15 @@ public class Shoe implements Serializable {
 
     public void setOrderDetailList(List<OrderDetail> orderDetailList) {
         this.orderDetailList = orderDetailList;
+    }
+
+    @XmlTransient
+    public List<SizeSpecific> getSizeSpecificList() {
+        return sizeSpecificList;
+    }
+
+    public void setSizeSpecificList(List<SizeSpecific> sizeSpecificList) {
+        this.sizeSpecificList = sizeSpecificList;
     }
 
     @Override

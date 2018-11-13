@@ -21,6 +21,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.transaction.UserTransaction;
 import model.Shoe;
+import model.SizeSpecific;
 
 /**
  *
@@ -43,6 +44,9 @@ public class ShoeJpaController implements Serializable {
         if (shoe.getOrderDetailList() == null) {
             shoe.setOrderDetailList(new ArrayList<OrderDetail>());
         }
+        if (shoe.getSizeSpecificList() == null) {
+            shoe.setSizeSpecificList(new ArrayList<SizeSpecific>());
+        }
         EntityManager em = null;
         try {
             utx.begin();
@@ -53,6 +57,12 @@ public class ShoeJpaController implements Serializable {
                 attachedOrderDetailList.add(orderDetailListOrderDetailToAttach);
             }
             shoe.setOrderDetailList(attachedOrderDetailList);
+            List<SizeSpecific> attachedSizeSpecificList = new ArrayList<SizeSpecific>();
+            for (SizeSpecific sizeSpecificListSizeSpecificToAttach : shoe.getSizeSpecificList()) {
+                sizeSpecificListSizeSpecificToAttach = em.getReference(sizeSpecificListSizeSpecificToAttach.getClass(), sizeSpecificListSizeSpecificToAttach.getSizeSpecificPK());
+                attachedSizeSpecificList.add(sizeSpecificListSizeSpecificToAttach);
+            }
+            shoe.setSizeSpecificList(attachedSizeSpecificList);
             em.persist(shoe);
             for (OrderDetail orderDetailListOrderDetail : shoe.getOrderDetailList()) {
                 Shoe oldShoeOfOrderDetailListOrderDetail = orderDetailListOrderDetail.getShoe();
@@ -61,6 +71,15 @@ public class ShoeJpaController implements Serializable {
                 if (oldShoeOfOrderDetailListOrderDetail != null) {
                     oldShoeOfOrderDetailListOrderDetail.getOrderDetailList().remove(orderDetailListOrderDetail);
                     oldShoeOfOrderDetailListOrderDetail = em.merge(oldShoeOfOrderDetailListOrderDetail);
+                }
+            }
+            for (SizeSpecific sizeSpecificListSizeSpecific : shoe.getSizeSpecificList()) {
+                Shoe oldShoeOfSizeSpecificListSizeSpecific = sizeSpecificListSizeSpecific.getShoe();
+                sizeSpecificListSizeSpecific.setShoe(shoe);
+                sizeSpecificListSizeSpecific = em.merge(sizeSpecificListSizeSpecific);
+                if (oldShoeOfSizeSpecificListSizeSpecific != null) {
+                    oldShoeOfSizeSpecificListSizeSpecific.getSizeSpecificList().remove(sizeSpecificListSizeSpecific);
+                    oldShoeOfSizeSpecificListSizeSpecific = em.merge(oldShoeOfSizeSpecificListSizeSpecific);
                 }
             }
             utx.commit();
@@ -89,6 +108,8 @@ public class ShoeJpaController implements Serializable {
             Shoe persistentShoe = em.find(Shoe.class, shoe.getShoeid());
             List<OrderDetail> orderDetailListOld = persistentShoe.getOrderDetailList();
             List<OrderDetail> orderDetailListNew = shoe.getOrderDetailList();
+            List<SizeSpecific> sizeSpecificListOld = persistentShoe.getSizeSpecificList();
+            List<SizeSpecific> sizeSpecificListNew = shoe.getSizeSpecificList();
             List<String> illegalOrphanMessages = null;
             for (OrderDetail orderDetailListOldOrderDetail : orderDetailListOld) {
                 if (!orderDetailListNew.contains(orderDetailListOldOrderDetail)) {
@@ -96,6 +117,14 @@ public class ShoeJpaController implements Serializable {
                         illegalOrphanMessages = new ArrayList<String>();
                     }
                     illegalOrphanMessages.add("You must retain OrderDetail " + orderDetailListOldOrderDetail + " since its shoe field is not nullable.");
+                }
+            }
+            for (SizeSpecific sizeSpecificListOldSizeSpecific : sizeSpecificListOld) {
+                if (!sizeSpecificListNew.contains(sizeSpecificListOldSizeSpecific)) {
+                    if (illegalOrphanMessages == null) {
+                        illegalOrphanMessages = new ArrayList<String>();
+                    }
+                    illegalOrphanMessages.add("You must retain SizeSpecific " + sizeSpecificListOldSizeSpecific + " since its shoe field is not nullable.");
                 }
             }
             if (illegalOrphanMessages != null) {
@@ -108,6 +137,13 @@ public class ShoeJpaController implements Serializable {
             }
             orderDetailListNew = attachedOrderDetailListNew;
             shoe.setOrderDetailList(orderDetailListNew);
+            List<SizeSpecific> attachedSizeSpecificListNew = new ArrayList<SizeSpecific>();
+            for (SizeSpecific sizeSpecificListNewSizeSpecificToAttach : sizeSpecificListNew) {
+                sizeSpecificListNewSizeSpecificToAttach = em.getReference(sizeSpecificListNewSizeSpecificToAttach.getClass(), sizeSpecificListNewSizeSpecificToAttach.getSizeSpecificPK());
+                attachedSizeSpecificListNew.add(sizeSpecificListNewSizeSpecificToAttach);
+            }
+            sizeSpecificListNew = attachedSizeSpecificListNew;
+            shoe.setSizeSpecificList(sizeSpecificListNew);
             shoe = em.merge(shoe);
             for (OrderDetail orderDetailListNewOrderDetail : orderDetailListNew) {
                 if (!orderDetailListOld.contains(orderDetailListNewOrderDetail)) {
@@ -117,6 +153,17 @@ public class ShoeJpaController implements Serializable {
                     if (oldShoeOfOrderDetailListNewOrderDetail != null && !oldShoeOfOrderDetailListNewOrderDetail.equals(shoe)) {
                         oldShoeOfOrderDetailListNewOrderDetail.getOrderDetailList().remove(orderDetailListNewOrderDetail);
                         oldShoeOfOrderDetailListNewOrderDetail = em.merge(oldShoeOfOrderDetailListNewOrderDetail);
+                    }
+                }
+            }
+            for (SizeSpecific sizeSpecificListNewSizeSpecific : sizeSpecificListNew) {
+                if (!sizeSpecificListOld.contains(sizeSpecificListNewSizeSpecific)) {
+                    Shoe oldShoeOfSizeSpecificListNewSizeSpecific = sizeSpecificListNewSizeSpecific.getShoe();
+                    sizeSpecificListNewSizeSpecific.setShoe(shoe);
+                    sizeSpecificListNewSizeSpecific = em.merge(sizeSpecificListNewSizeSpecific);
+                    if (oldShoeOfSizeSpecificListNewSizeSpecific != null && !oldShoeOfSizeSpecificListNewSizeSpecific.equals(shoe)) {
+                        oldShoeOfSizeSpecificListNewSizeSpecific.getSizeSpecificList().remove(sizeSpecificListNewSizeSpecific);
+                        oldShoeOfSizeSpecificListNewSizeSpecific = em.merge(oldShoeOfSizeSpecificListNewSizeSpecific);
                     }
                 }
             }
@@ -161,6 +208,13 @@ public class ShoeJpaController implements Serializable {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
                 illegalOrphanMessages.add("This Shoe (" + shoe + ") cannot be destroyed since the OrderDetail " + orderDetailListOrphanCheckOrderDetail + " in its orderDetailList field has a non-nullable shoe field.");
+            }
+            List<SizeSpecific> sizeSpecificListOrphanCheck = shoe.getSizeSpecificList();
+            for (SizeSpecific sizeSpecificListOrphanCheckSizeSpecific : sizeSpecificListOrphanCheck) {
+                if (illegalOrphanMessages == null) {
+                    illegalOrphanMessages = new ArrayList<String>();
+                }
+                illegalOrphanMessages.add("This Shoe (" + shoe + ") cannot be destroyed since the SizeSpecific " + sizeSpecificListOrphanCheckSizeSpecific + " in its sizeSpecificList field has a non-nullable shoe field.");
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);

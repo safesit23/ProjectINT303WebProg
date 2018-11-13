@@ -17,6 +17,7 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import javax.transaction.UserTransaction;
+import model.Shoe;
 import model.SizeSpecific;
 import model.SizeSpecificPK;
 
@@ -41,11 +42,21 @@ public class SizeSpecificJpaController implements Serializable {
         if (sizeSpecific.getSizeSpecificPK() == null) {
             sizeSpecific.setSizeSpecificPK(new SizeSpecificPK());
         }
+        sizeSpecific.getSizeSpecificPK().setShoeid(sizeSpecific.getShoe().getShoeid());
         EntityManager em = null;
         try {
             utx.begin();
             em = getEntityManager();
+            Shoe shoe = sizeSpecific.getShoe();
+            if (shoe != null) {
+                shoe = em.getReference(shoe.getClass(), shoe.getShoeid());
+                sizeSpecific.setShoe(shoe);
+            }
             em.persist(sizeSpecific);
+            if (shoe != null) {
+                shoe.getSizeSpecificList().add(sizeSpecific);
+                shoe = em.merge(shoe);
+            }
             utx.commit();
         } catch (Exception ex) {
             try {
@@ -65,11 +76,27 @@ public class SizeSpecificJpaController implements Serializable {
     }
 
     public void edit(SizeSpecific sizeSpecific) throws NonexistentEntityException, RollbackFailureException, Exception {
+        sizeSpecific.getSizeSpecificPK().setShoeid(sizeSpecific.getShoe().getShoeid());
         EntityManager em = null;
         try {
             utx.begin();
             em = getEntityManager();
+            SizeSpecific persistentSizeSpecific = em.find(SizeSpecific.class, sizeSpecific.getSizeSpecificPK());
+            Shoe shoeOld = persistentSizeSpecific.getShoe();
+            Shoe shoeNew = sizeSpecific.getShoe();
+            if (shoeNew != null) {
+                shoeNew = em.getReference(shoeNew.getClass(), shoeNew.getShoeid());
+                sizeSpecific.setShoe(shoeNew);
+            }
             sizeSpecific = em.merge(sizeSpecific);
+            if (shoeOld != null && !shoeOld.equals(shoeNew)) {
+                shoeOld.getSizeSpecificList().remove(sizeSpecific);
+                shoeOld = em.merge(shoeOld);
+            }
+            if (shoeNew != null && !shoeNew.equals(shoeOld)) {
+                shoeNew.getSizeSpecificList().add(sizeSpecific);
+                shoeNew = em.merge(shoeNew);
+            }
             utx.commit();
         } catch (Exception ex) {
             try {
@@ -103,6 +130,11 @@ public class SizeSpecificJpaController implements Serializable {
                 sizeSpecific.getSizeSpecificPK();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The sizeSpecific with id " + id + " no longer exists.", enfe);
+            }
+            Shoe shoe = sizeSpecific.getShoe();
+            if (shoe != null) {
+                shoe.getSizeSpecificList().remove(sizeSpecific);
+                shoe = em.merge(shoe);
             }
             em.remove(sizeSpecific);
             utx.commit();

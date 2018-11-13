@@ -43,8 +43,8 @@ public class OrderDetailJpaController implements Serializable {
         if (orderDetail.getOrderDetailPK() == null) {
             orderDetail.setOrderDetailPK(new OrderDetailPK());
         }
-        orderDetail.getOrderDetailPK().setOrderid(orderDetail.getOrders().getOrderid());
         orderDetail.getOrderDetailPK().setShoeid(orderDetail.getShoe().getShoeid());
+        orderDetail.getOrderDetailPK().setOrderid(orderDetail.getOrders().getOrderid());
         EntityManager em = null;
         try {
             utx.begin();
@@ -87,8 +87,8 @@ public class OrderDetailJpaController implements Serializable {
     }
 
     public void edit(OrderDetail orderDetail) throws NonexistentEntityException, RollbackFailureException, Exception {
-        orderDetail.getOrderDetailPK().setOrderid(orderDetail.getOrders().getOrderid());
         orderDetail.getOrderDetailPK().setShoeid(orderDetail.getShoe().getShoeid());
+        orderDetail.getOrderDetailPK().setOrderid(orderDetail.getOrders().getOrderid());
         EntityManager em = null;
         try {
             utx.begin();
