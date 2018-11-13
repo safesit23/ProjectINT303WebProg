@@ -11,11 +11,6 @@
         <jsp:include page="include/header.jsp" />
     </head>
     <body>
-        <style>
-            #content{
-                padding-top: 100px;
-            }
-        </style>
         <jsp:include page="include/navbar.jsp"/>
         <div class="container jktcontent">
             <h1>Login</h1>
