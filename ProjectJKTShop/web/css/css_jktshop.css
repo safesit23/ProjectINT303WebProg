@@ -1,3 +1,18 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 14, 2018, 12:13:46 AM
+    Author     : jatawatsafe
+*/
+
+body{
+    font-family: "Prompt";
+    background-color: yellow;
+}
+
 .jktcontent{
     padding-top: 100px;
 }
