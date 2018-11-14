@@ -22,16 +22,17 @@ Have 6 Table:
 * voucher
 
 ### Data
-Shoe Table
-example : `('NI001SH200','NikeAir','black','running','MEN','nike',3000)`
 
-SizeSpecific Table
-example Data
-example : `('NI001SH200',7)`
+#### Shoe
+- Brand: nike, adidas, fila, skechers, new balance
+- Insert `('shoeId','shoeName','color','type','type2','brand','price')`
+- example : `('NI001SH200','NikeAir','black','running','MEN','nike',3000)`
 
-Voucher Table
-example Data
-example : 
+#### SizeSpecific
+- example : `('NI001SH200',7)`
+
+#### Voucher Table
+- example : 
 `insert  into voucher(voucherId,voucherValue,minSpend) values
 ('NEW100',100,1500);`
 
