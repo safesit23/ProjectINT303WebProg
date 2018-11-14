@@ -1,11 +1,26 @@
 # [ProjectINT303WebProg : JKT Shop](https://github.com/safesit23/ProjectINT303WebProg/)
 
-[![Preview](pic)]
+[![Preview](https://drive.google.com/file/d/1iUDyuMgJdI6gWMuIsb9VMEYRrRo5ff6v/view?usp=sharing)]
 
-## Download and Installation
+## Initial Project
 
 To begin this project:
 * Clone the repo: `https://github.com/safesit23/ProjectINT303WebProg.git`
+
+### Project Structure
+* web
+  * css : external css
+  * images 
+     * content
+     * carousel
+     * shoe
+  * include : header, footer, navbar
+  * bootstrap
+  * JSP Page
+* src
+  * model
+  * servlet
+  * controller
 
 ## Database
 * Database Name: projectint303
@@ -54,3 +69,6 @@ for viewing todolist that you must be done
 
 ### [Figma](https://www.figma.com/files/team/639718251727099957/INT303-Webprog)
 for watching wireframe of this web site.
+
+### [Google Drive](https://drive.google.com/drive/folders/1iK_DfumIu-DqvwigPUIg_xvcU_yJVufW?usp=sharing)
+for upload picture or add file if you cannot use git and use to write Proposal document
