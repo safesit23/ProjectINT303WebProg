@@ -14,9 +14,9 @@
     </head>
     <body>
         <jsp:include page="include/navbar.jsp"/>
-        <div class="container jktcontent">
-            <h1>Login</h1>
-            <form action="LoginServlet" method="post">
+        <div class="container jktcontent" style="min-height: 550px;">
+            <h1>Register</h1>
+            <form action="RegisterServlet" method="post">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
