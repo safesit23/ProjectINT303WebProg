@@ -44,11 +44,11 @@
                 <!--Product col-md-9 -->
                 <div class="col-md-9">
                     <div class="row">
-                        <%--<c:forEach items="${shoeList}" var="product" varStatus="vs">--%>
+                        <%--<c:forEach items="${shoeList}" var="product">--%>
                         <!-- 1 card-->
                         <div class="col-lg-4 col-md-4 col-sm-6 portfolio-item">
                             <div class="card h-100">
-                                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                                <a href="#"><img class="card-img-top" src="images/shoes/demo.jpg" alt=""></a>
                                 <div class="card-body">
                                     <h4 class="card-title">
                                         <a href="#">Project One</a>
