@@ -26,7 +26,6 @@ public class Cart {
     
     public void add(Shoe shoe, int shoeSize){
         String specificShoe = ""+shoe.getShoeid()+shoeSize;
-        System.out.println("--------ADD Method-----");
         CartDetail line = cart.get(specificShoe);
         //if don't have this shoe
         if(line==null){
