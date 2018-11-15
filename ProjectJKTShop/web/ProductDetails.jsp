@@ -4,6 +4,7 @@
     Author     : jatawatsafe
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,8 +16,17 @@
     <body>
         <jsp:include page="include/navbar.jsp"/>
         <div class="container jktcontent">
-            <h1>HOMEPAGE</h1>
-            <div style="height: 100px;"></div>
+            <h1>Product Details: ${shoe.shoeid}</h1>
+            <form action="#" method="post">
+            <select name="size">
+                <c:forEach items="${shoeSize}" var="size">
+                <option value="${size}">US ${size}</option>
+                </c:forEach>
+                <option value="${size}">US 6</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <div style="height: 300px;"></div>
         </div>
         <jsp:include page="include/footer.jsp"/>
     </body>
