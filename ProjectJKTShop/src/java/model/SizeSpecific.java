@@ -61,7 +61,7 @@ public class SizeSpecific implements Serializable {
     public void setShoe(Shoe shoe) {
         this.shoe = shoe;
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;
