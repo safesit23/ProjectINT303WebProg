@@ -15,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
 import model.Shoe;
 
@@ -39,9 +40,10 @@ UserTransaction utx;
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
         ShoeJpaController shoeCtrl = new ShoeJpaController(utx, emf);
         List<Shoe> shoeList = shoeCtrl.findShoeEntities();
-        request.setAttribute("shoeList", shoeList);
+        session.setAttribute("shoeList", shoeList);
         getServletContext().getRequestDispatcher("/AboutProduct.jsp").forward(request, response);
     }
 
