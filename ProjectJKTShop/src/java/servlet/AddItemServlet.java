@@ -5,18 +5,32 @@
  */
 package servlet;
 
+import controller.ShoeJpaController;
+import controller.SizeSpecificJpaController;
 import java.io.IOException;
-import java.io.PrintWriter;
+import javax.annotation.Resource;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.transaction.UserTransaction;
+import model.Cart;
+import model.Shoe;
+import model.SizeSpecific;
 
 /**
  *
  * @author jatawatsafe
  */
 public class AddItemServlet extends HttpServlet {
+
+    @PersistenceUnit(unitName = "JKTShopPU")
+    EntityManagerFactory emf;
+    @Resource
+    UserTransaction utx;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,19 +43,25 @@ public class AddItemServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AddItemServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AddItemServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        HttpSession session = request.getSession(true);
+        Cart cart = (Cart) session.getAttribute("cart");
+        if (cart == null) {
+            System.out.println("------New Cart------");
+            cart = new Cart();
+            session.setAttribute("cart", cart);
         }
+        String shoeId = request.getParameter("shoeId");
+        String shoeSizeText = request.getParameter("shoeSize");
+        if (shoeId != null && shoeSizeText != null) {
+            int shoeSize = Integer.parseInt(shoeSizeText);
+            ShoeJpaController sCtrl = new ShoeJpaController(utx, emf);
+            SizeSpecificJpaController ssCtrl = new SizeSpecificJpaController(utx, emf);
+            Shoe shoe = sCtrl.findShoe(shoeId);
+            SizeSpecific ss = new SizeSpecific(shoeId, shoeSize);
+            System.out.println("----------------------\nSizeSpecific:"+ss.getSizeSpecificPK().getSpecificShoe());
+            cart.add(shoe, shoeSize);
+        }
+        response.sendRedirect("AboutProductServlet");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
