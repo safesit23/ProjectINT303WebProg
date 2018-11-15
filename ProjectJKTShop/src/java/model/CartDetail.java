@@ -17,12 +17,20 @@ public class CartDetail {
 
     public CartDetail() {
     }
-
+    
     public CartDetail(Shoe shoe, int shoeSize, int quantity) {
         this.shoe = shoe;
         this.shoeSize = shoeSize;
         this.quantity = quantity;
         this.price = shoe.getPrice();
+    }
+    
+    public CartDetail(Shoe shoe, int shoeSize) {
+        this(shoe,shoeSize,1);
+    }
+    
+    public CartDetail(SizeSpecific ss) {
+        this(ss.getShoe(),ss.getSizeSpecificPK().getShoesize());
     }
 
     public Shoe getShoe() {
