@@ -67,7 +67,9 @@
                     </c:otherwise>
                 </c:choose>
                 <li class="nav-item">
-                    <a class="nav-link" href="Cart.jsp"><i class="material-icons md-light">shopping_cart</i>Cart()</a>
+                    <a class="nav-link" href="Cart.jsp"><i class="material-icons md-light">shopping_cart</i>Cart
+                        <c:if test="${cart!=null}">(${cart.totalQuantity})</c:if>
+                    </a>
                 </li>
             </ul>
         </div>
