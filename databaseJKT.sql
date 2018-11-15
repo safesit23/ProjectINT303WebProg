@@ -44,8 +44,16 @@ CREATE TABLE shoe (
 
 /*Data for the table shoe */
 insert  into shoe(shoeId,shoeName,color,shoeType,shoeType2,brand,price) values
-('NI001SH200','NikeAir','black','running','MEN','nike',3000);
-
+('NI001SH200','Nike01','black','running','MEN','nike',1000),
+('NI002SH200','Nike02','white','sport','WOMEN','nike',2000),
+('NI003SH200','Nike03','black','training','ALL','nike',3000),
+('NI004SH200','Nike04','white','running','ALL','nike',4000),
+('AD005SH200','Adidas01','black','running','MEN','adidas',5000),
+('AD006SH200','Adidas02','white','running','MEN','adidas',6000),
+('FL007SH200','Fila01','black','running','WOMEN','fila',8000),
+('NE008SH200','NewBalance01','white','running','ALL','new balance',8000),
+('SK009SH200','skechers01','black','running','WOMEN','skechers',9000),
+('SK010SH200','skechers02','white','running','MEN','skechers',9990);
 
 /********************Table structure for table sizeSpecific ********************/
 DROP TABLE sizeSpecific;
