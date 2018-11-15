@@ -5,8 +5,10 @@
  */
 package model;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,6 +17,7 @@ import java.util.Map;
  */
 public class Cart {
     private Map<String, CartDetail> cart;
+    private 
     //Key = String SpecificShoe
     //Value = CartDetail(SizeSpecific ss)
 
@@ -50,5 +53,17 @@ public class Cart {
         return sum;
     }
     
+    public List<CartDetail> getCartDetails(){
+        return new ArrayList(cart.values());
+    }
     
+    public double getTotalPrice(){
+        double sum = 0;
+        Collection<CartDetail> details = cart.values();
+        for (CartDetail item : details) {
+            sum+=item.getTotalPrice();
+        }
+        return sum;
+    }
+
 }
