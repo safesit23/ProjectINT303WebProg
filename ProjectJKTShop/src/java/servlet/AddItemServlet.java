@@ -61,9 +61,13 @@ public class AddItemServlet extends HttpServlet {
             System.out.println("----------------------\nSizeSpecific:"+ss.getSizeSpecificPK().getSpecificShoe());
             cart.add(shoe, shoeSize);
         }
-        response.sendRedirect("AboutProductServlet");
+        String page = request.getParameter("page");
+        if(page!=null){
+            response.sendRedirect("Cart.jsp");
+        }else{
+            response.sendRedirect("AboutProductServlet");
+        }
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
