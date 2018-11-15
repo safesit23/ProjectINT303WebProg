@@ -52,7 +52,7 @@
                                     <img class="card-img-top" src="images/shoes/demo.jpg" alt="${shoe.shoename}">
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="#">${shoe.shoename}</a>
+                                            <a href="ProductDetailsServlet?shoeId=${shoe.shoeid}">${shoe.shoename}</a>
                                         </h4>
                                         <p class="card-text">About Product</p>
                                     </div>
