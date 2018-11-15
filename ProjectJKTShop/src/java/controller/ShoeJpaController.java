@@ -281,4 +281,15 @@ public class ShoeJpaController implements Serializable {
         }
     }
     
+    public List<Shoe> findShoeByBrand(String productBrand){
+        EntityManager em = getEntityManager();
+        try{
+            Query query = em.createNamedQuery("Shoe.findByBrand");
+            query.setParameter("brand", "%"+productBrand.toLowerCase()+"%");
+            return query.getResultList();
+        }finally{
+            em.close();
+        }
+    }
+    
 }
