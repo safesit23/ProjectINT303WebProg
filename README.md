@@ -1,26 +1,33 @@
 # [ProjectINT303WebProg : JKT Shop](https://github.com/safesit23/ProjectINT303WebProg/)
 
-[![Preview](https://drive.google.com/file/d/1iUDyuMgJdI6gWMuIsb9VMEYRrRo5ff6v/view?usp=sharing)]
-
 ## Initial Project
 
 To begin this project:
 * Clone the repo: `https://github.com/safesit23/ProjectINT303WebProg.git`
 
 ### Project Structure
-* web
-  * css : external css
-  * images 
-     * content
-     * carousel
-     * shoe
-  * include : header, footer, navbar
-  * bootstrap
-  * JSP Page
-* src
-  * model
-  * servlet
-  * controller
+```
+ProjectINT303WebProg/
+└── databaseJKT.sql
+└── ProjectJKTShop/
+    ├── web/
+    │   ├── css
+    │   ├── bootstrap
+    │   ├── images/
+    |   |      ├── content
+    |   |      ├── carousel
+    |   |      └── shoes
+    │   ├── include/
+    |   |      ├── header.jsp
+    |   |      ├── navbar.jsp
+    |   |      └── footer.jsp
+    │   ├── index.jsp
+    │   └── Page.jsp
+    └── src/java/
+        ├── model
+        ├── servlet
+        └── controller
+```
 
 ## Database
 * Database Name: projectint303
@@ -51,8 +58,15 @@ Have 6 Table:
 `insert  into voucher(voucherId,voucherValue,minSpend) values
 ('NEW100',100,1500);`
 
+## TOOLS (For project)
+### [Material](https://material.io/tools/icons/?style=baseline)
+for icon in website
+* Example: `<i class="material-icons">person</i>`
+* Change color to white: `class="md-light"`
+### [Bootstrap v4.1.3](https://getbootstrap.com)
 
-## TOOLS
+
+## TOOLS (For working)
 ### [Sourcetree](https://www.sourcetreeapp.com) or [GithubDesktop](https://desktop.github.com)
 1. Allow to use Branch DEV Only
 2. Every Commit must have prefix
