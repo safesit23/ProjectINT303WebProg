@@ -17,14 +17,13 @@
         <jsp:include page="include/navbar.jsp"/>
         <div class="container jktcontent">
             <h1>Product Details: ${shoe.shoeid}</h1>
-            <form action="#" method="post">
-            <select name="size">
-                <c:forEach items="${shoeSize}" var="size">
-                <option value="${size}">US ${size}</option>
-                </c:forEach>
-                <option value="${size}">US 6</option>
-            </select>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <form action="AddItemServlet" method="post">
+                <select name="shoeSize">
+                    <c:forEach items="${shoeSize}" var="size">
+                        <option value="${size}">US ${size}</option>
+                    </c:forEach>
+                </select>
+                <button type="submit" class="btn btn-primary" name="shoeId" value="${shoe.shoeid}">Buy</button>
             </form>
             <div style="height: 300px;"></div>
         </div>
