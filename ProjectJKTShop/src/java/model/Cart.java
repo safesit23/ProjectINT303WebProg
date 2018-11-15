@@ -46,7 +46,12 @@ public class Cart {
     }
 
     public void remove(String specificShoe) {
-        cart.remove(specificShoe);
+        CartDetail line = cart.get(specificShoe);
+        if (line.getQuantity() == 1) {
+            cart.remove(specificShoe);
+        } else {
+            line.setQuantity(line.getQuantity() - 1);
+        }
     }
 
     public void remove(SizeSpecific ss) {
