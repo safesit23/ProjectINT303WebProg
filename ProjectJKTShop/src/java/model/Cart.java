@@ -24,11 +24,13 @@ public class Cart {
         cart = new HashMap();
     }
     
-    public void add(SizeSpecific ss){
-        CartDetail line = cart.get(ss.getSizeSpecificPK().getSpecificShoe());
+    public void add(Shoe shoe, int shoeSize){
+        String specificShoe = ""+shoe.getShoeid()+shoeSize;
+        System.out.println("--------ADD Method-----");
+        CartDetail line = cart.get(specificShoe);
         //if don't have this shoe
         if(line==null){
-            cart.put(ss.getSizeSpecificPK().getSpecificShoe(), new CartDetail(ss));
+            cart.put(specificShoe, new CartDetail(shoe, shoeSize));
         }else{
             line.setQuantity(line.getQuantity()+1);
         }
