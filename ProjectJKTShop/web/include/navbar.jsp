@@ -17,7 +17,7 @@
                     <a class="nav-link" href="Login.jsp">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="Cart.jsp">Cart</a>
                 </li>
             </ul>
         </div>
