@@ -5,19 +5,29 @@
  */
 package servlet;
 
+import controller.ShoeJpaController;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
+import javax.annotation.Resource;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.UserTransaction;
+import model.Shoe;
 
 /**
  *
  * @author jatawatsafe
  */
 public class AboutProductServlet extends HttpServlet {
+@PersistenceUnit(unitName = "JKTShopPU")
+EntityManagerFactory emf;
 
+@Resource
+UserTransaction utx;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -29,8 +39,10 @@ public class AboutProductServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        
+        ShoeJpaController shoeCtrl = new ShoeJpaController(utx, emf);
+        List<Shoe> shoeList = shoeCtrl.findShoeEntities();
+        request.setAttribute("shoeList", shoeList);
+        getServletContext().getRequestDispatcher("/AboutProduct.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
