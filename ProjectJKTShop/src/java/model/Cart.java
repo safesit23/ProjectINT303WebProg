@@ -17,7 +17,6 @@ import java.util.Map;
  */
 public class Cart {
     private Map<String, CartDetail> cart;
-    private 
     //Key = String SpecificShoe
     //Value = CartDetail(SizeSpecific ss)
 
@@ -65,5 +64,4 @@ public class Cart {
         }
         return sum;
     }
-
 }
