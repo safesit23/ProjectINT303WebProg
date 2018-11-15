@@ -9,6 +9,8 @@
 <html>
     <head>
         <jsp:include page="include/header.jsp" />
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" >
     </head>
     <body>
         <jsp:include page="include/navbar.jsp"/>
