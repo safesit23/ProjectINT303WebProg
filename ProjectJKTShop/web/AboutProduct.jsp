@@ -44,21 +44,21 @@
                 <!--Product col-md-9 -->
                 <div class="col-md-9">
                     <div class="row">
-                        <%--<c:forEach items="${shoeList}" var="product">--%>
+                        <c:forEach items="${shoeList}" var="shoe">
                         <!-- 1 card-->
                         <div class="col-lg-4 col-md-4 col-sm-6 portfolio-item">
                             <div class="card h-100">
-                                <a href="#"><img class="card-img-top" src="images/shoes/demo.jpg" alt=""></a>
+                                <img class="card-img-top" src="images/shoes/demo.jpg" alt="${shoe.shoename}">
                                 <div class="card-body">
                                     <h4 class="card-title">
-                                        <a href="#">Project One</a>
+                                        <a href="#">${shoe.shoename}</a>
                                     </h4>
                                     <p class="card-text">About Product</p>
                                 </div>
                             </div>
                         </div>
                         <!-- /end 1 card-->
-                        <%--</c:forEach>--%>
+                        </c:forEach>
                         
                     </div> <!--End Row Product-->
                 </div> <!--end col md 9-->
