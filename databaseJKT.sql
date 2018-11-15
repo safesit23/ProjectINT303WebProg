@@ -69,7 +69,41 @@ CREATE table sizeSpecific(
 insert into sizeSpecific(shoeId,shoeSize) values
 ('NI001SH200',7),
 ('NI001SH200',9),
-('NI001SH200',10);
+('NI001SH200',10),
+('NI002SH200',7),
+('NI002SH200',8),
+('NI002SH200',9),
+('NI002SH200',10),
+('NI002SH200',11),
+('NI003SH200',8),
+('NI003SH200',9),
+('NI003SH200',10),
+('NI004SH200',8),
+('NI004SH200',9),
+('NI004SH200',10),
+('NI004SH200',11),
+('AD005SH200',8),
+('AD005SH200',9),
+('AD005SH200',10),
+('AD005SH200',12),
+('AD006SH200',7),
+('AD006SH200',9),
+('AD006SH200',10),
+('FL007SH200',7),
+('FL007SH200',9),
+('FL007SH200',10),
+('NE008SH200',10),
+('NE008SH200',11),
+('NE008SH200',12),
+('SK009SH200',9),
+('SK009SH200',10),
+('SK009SH200',11),
+('SK009SH200',12),
+('SK010SH200',7),
+('SK010SH200',8);
+
+
+
 
 /*******************Table structure for table orders *****************/
 DROP TABLE orders;
