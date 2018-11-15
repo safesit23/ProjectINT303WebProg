@@ -34,8 +34,10 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="container-fluid">
-        <a id="logoSR" class="navbar-brand" href="index.jsp"><img src="images/content/logo.svg" style="margin-top: -10px; margin-right: -15px; width: 45px;" alt="logo"></a>
-        <a class="navbar-brand" href="index.jsp">JKT SHOP</a>
+        <div>
+            <a id="logoSR" class="navbar-brand" href="index.jsp"><img src="images/content/logo.svg" style="margin-top: -10px; margin-right: -15px; width: 45px;" alt="logo"></a>
+            <a class="navbar-brand" href="index.jsp">JKT SHOP</a>
+        </div>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
             <ul class="navbar-nav">
                 <li class="nav-item active">
@@ -46,7 +48,7 @@
                 </li>
             </ul>
         </div>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
             <ul class="navbar-nav ml-auto">
                 <c:choose>
                     <c:when test="${user==null}">
