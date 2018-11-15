@@ -27,11 +27,11 @@
                 <div class="col-md-3">
                     <p class="lead" style="margin-top: 5px;">Brand</p>
                     <div class="list-group" style="margin-bottom: 10px">
-                        <a href="#" class="list-group-item" onclick="">Nike</a>
-                        <a href="#" class="list-group-item" onclick="">Adidas</a>
-                        <a href="#" class="list-group-item" onclick="">Fila</a>
-                        <a href="#" class="list-group-item" onclick="">Skechers</a>
-                        <a href="#" class="list-group-item" onclick="">New Balance</a>
+                        <a href="SearchItemServlet?brand=nike" class="list-group-item" onclick="">Nike</a>
+                        <a href="SearchItemServlet?brand=adidas" class="list-group-item" onclick="">Adidas</a>
+                        <a href="SearchItemServlet?brand=fila" class="list-group-item" onclick="">Fila</a>
+                        <a href="SearchItemServlet?brand=skechers" class="list-group-item" onclick="">Skechers</a>
+                        <a href="SearchItemServlet?brand=new balance" class="list-group-item" onclick="">New Balance</a>
                     </div>
                     <p class="lead">Gender</p>
                     <div class="list-group">
