@@ -30,7 +30,11 @@ public class CartDetail {
     }
     
     public CartDetail(SizeSpecific ss) {
-        this(ss.getShoe(),ss.getSizeSpecificPK().getShoesize());
+        this.shoe = ss.getShoe();
+        this.shoeSize = ss.getSizeSpecificPK().getShoesize();
+        this.quantity = 1;
+        this.price = ss.getShoe().getPrice();
+        System.out.println("--------Cart Detail------");
     }
 
     public Shoe getShoe() {
