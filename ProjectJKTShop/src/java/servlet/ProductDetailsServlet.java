@@ -5,18 +5,31 @@
  */
 package servlet;
 
+import controller.ShoeJpaController;
+import controller.SizeSpecificJpaController;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Resource;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.UserTransaction;
+import model.Shoe;
+import model.SizeSpecific;
 
 /**
  *
  * @author jatawatsafe
  */
 public class ProductDetailsServlet extends HttpServlet {
+@PersistenceUnit(unitName = "JKTShopPU")
+EntityManagerFactory emf;
+@Resource
+UserTransaction utx;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,19 +42,20 @@ public class ProductDetailsServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ProductDetailsServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ProductDetailsServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        String shoeId = request.getParameter("shoeId");
+        if(shoeId!=null){
+            ShoeJpaController sCtrl = new ShoeJpaController(utx, emf);
+            Shoe shoe = sCtrl.findShoe(shoeId);
+            List<SizeSpecific> listSizeSpecific = shoe.getSizeSpecificList();
+            List shoeSize = new ArrayList();
+            for (SizeSpecific ss : listSizeSpecific) {
+                int size = ss.getSizeSpecificPK().getShoesize();
+                shoeSize.add(size);
+            }
+            request.setAttribute("shoe",shoe);
+            request.setAttribute("shoeSize",shoeSize);
         }
+        getServletContext().getRequestDispatcher("/ProductDetails.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
