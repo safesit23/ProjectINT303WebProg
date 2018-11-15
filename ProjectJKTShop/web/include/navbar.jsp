@@ -44,7 +44,7 @@
                     <a class="nav-link" href="AboutProductServlet">Products<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About Us</a>
+                    <a class="nav-link" href="AboutUs.jsp">About Us</a>
                 </li>
             </ul>
         </div>
