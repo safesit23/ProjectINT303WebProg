@@ -10,7 +10,8 @@
 <html>
     <head>
         <jsp:include page="include/header.jsp" />
-        <link href="css/css_jktshop.css" rel="stylesheet" >
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" >
         <style>
             .portfolio-item {
                 margin-bottom: 30px;
@@ -45,21 +46,21 @@
                 <div class="col-md-9">
                     <div class="row">
                         <c:forEach items="${shoeList}" var="shoe">
-                        <!-- 1 card-->
-                        <div class="col-lg-4 col-md-4 col-sm-6 portfolio-item">
-                            <div class="card h-100">
-                                <img class="card-img-top" src="images/shoes/demo.jpg" alt="${shoe.shoename}">
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                        <a href="#">${shoe.shoename}</a>
-                                    </h4>
-                                    <p class="card-text">About Product</p>
+                            <!-- 1 card-->
+                            <div class="col-lg-4 col-md-4 col-sm-6 portfolio-item">
+                                <div class="card h-100">
+                                    <img class="card-img-top" src="images/shoes/demo.jpg" alt="${shoe.shoename}">
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            <a href="#">${shoe.shoename}</a>
+                                        </h4>
+                                        <p class="card-text">About Product</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- /end 1 card-->
+                            <!-- /end 1 card-->
                         </c:forEach>
-                        
+
                     </div> <!--End Row Product-->
                 </div> <!--end col md 9-->
             </div> <!-- /.row -->
