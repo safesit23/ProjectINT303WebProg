@@ -53,6 +53,10 @@ public class SizeSpecificPK implements Serializable {
         this.shoesize = shoesize;
     }
 
+    public String getSpecificShoe() {
+        return "" + this.shoeid + this.shoesize;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -81,5 +85,5 @@ public class SizeSpecificPK implements Serializable {
     public String toString() {
         return "model.SizeSpecificPK[ shoeid=" + shoeid + ", shoesize=" + shoesize + " ]";
     }
-    
+
 }
