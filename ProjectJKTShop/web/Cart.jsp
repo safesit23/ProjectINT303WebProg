@@ -15,7 +15,7 @@
     </head>
     <body>
         <jsp:include page="include/navbar.jsp"/>
-        <div class="container jktcontent" style="min-height: 800px;">
+        <div class="container jktcontent" style="min-height: 550px;">
             <h1>Cart</h1>
             <c:choose>
                 <c:when test="${cart==null||cart.totalQuantity==0}">

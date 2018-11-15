@@ -14,7 +14,7 @@
     </head>
     <body>
         <jsp:include page="include/navbar.jsp"/>
-        <div class="container jktcontent">
+        <div class="container jktcontent" style="min-height: 550px;">
             <h1>Login</h1>
             <form action="LoginServlet" method="post">
                 <div class="form-group">
@@ -27,6 +27,8 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+            <br><br>
+            <a href="Register.jsp"><button class="btn btn-primary">Register</button></a>
         </div>
         <jsp:include page="include/footer.jsp"/>
     </body>
