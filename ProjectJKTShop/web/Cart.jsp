@@ -15,51 +15,55 @@
     </head>
     <body>
         <jsp:include page="include/navbar.jsp"/>
-        <div class="container jktcontent" style="min-height: 550px;">
-            <h1>Cart</h1>
+        <div class="container jktcontent" style="min-height: 650px; padding-bottom: 50px;">
             <c:choose>
                 <c:when test="${cart==null||cart.totalQuantity==0}">
                     <div class="alert alert-danger" role="alert">
                         ไม่มีสินค้า
                     </div>
-                    </c:when>
-                    <c:otherwise>
-                        <div class="row">
-                        <div class="col-md-9">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Shoe Name</th>
-                                        <th scope="col">Size</th>
-                                        <th scope="col">Quantity</th>
-                                        <th scope="col">Total Price</th>
-                                        <th scope="col"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <c:forEach items="${sessionScope.cart.cartDetails}" var="line" varStatus="vs">
-                                        <tr>
-                                            <th scope="row">${vs.count}</th>
-                                            <td>${line.shoe.shoename}</td>
-                                            <td>${line.shoeSize}</td>
-                                            <td>${line.quantity}</td>
-                                            <td>${line.totalPrice}</td>
-                                            <td>
-                                                <a href="AddItemServlet?shoeId=${line.shoe.shoeid}&shoeSize=${line.shoeSize}&page=cart.jsp"><i class="material-icons">add_shopping_cart</i></a>
-                                                <span style="padding: 0px 5px;"></span>
-                                                <a href="RemoveItemServlet?shoeId=${line.shoe.shoeid}&shoeSize=${line.shoeSize}&page=cart.jsp"><i class="material-icons">remove_shopping_cart</i></a>
-                                            </td>
-                                        </tr>
-                                    </c:forEach>
-                                </tbody>
-                            </table>
+                </c:when>
+                <c:otherwise>
+                    <div class="row">
+                        <div class="col-md-12" style="margin-top: 50px;">
+                            <h1 class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="text-muted">Your cart</span>
+                                <span class="badge badge-secondary badge-pill">${cart.totalQuantity}</span>
+                            </h1>
+                            <ul class="list-group mb-3">
+                                <c:forEach items="${sessionScope.cart.cartDetails}" var="line" varStatus="vs">
+                                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                        <div>
+                                            <h6 class="my-0">${line.shoe.shoename}</h6>
+                                            <small class="text-muted">Size: US${line.shoeSize}</small>
+                                        </div>
+                                        <span>
+                                            <a href="AddItemServlet?shoeId=${line.shoe.shoeid}&shoeSize=${line.shoeSize}&page=cart.jsp" class="mr-2"><i class="material-icons">add_shopping_cart</i></a>
+                                            <a href="RemoveItemServlet?shoeId=${line.shoe.shoeid}&shoeSize=${line.shoeSize}&page=cart.jsp" class="mr-4"><i class="material-icons">remove_shopping_cart</i></a>
+                                            <span class="text-muted">${line.quantity} x ${line.shoe.price} THB</span>
+                                        </span>
+                                    </li>
+                                </c:forEach>
+                                <!--                                <li class="list-group-item d-flex justify-content-between bg-light">
+                                                                    <div class="text-success">
+                                                                        <h6 class="my-0">Promo code</h6>
+                                                                        <small>EXAMPLECODE</small>
+                                                                    </div>
+                                                                    <span class="text-success">-$5</span>
+                                                                </li>-->
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <span>Total (THB)</span>
+                                    <strong>${sessionScope.cart.totalPrice}</strong>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="col-md-3" style="background-color: #ffc107;height:100px ; width: auto">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 offset-9">
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
                         </div>
-                    </c:otherwise>
-                </c:choose>
-            </div>
+                    </div>
+                </c:otherwise>
+            </c:choose>
         </div>
         <jsp:include page="include/footer.jsp"/>
     </body>
