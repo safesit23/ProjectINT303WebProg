@@ -26,7 +26,7 @@
                 <!--List col-md-3 -->
                 <div class="col-md-3">
                     <p class="lead" style="margin-top: 5px;">Brand</p>
-                    <div class="list-group" style="margin-bottom: 10px">
+                    <div class="list-group mb-4">
                         <a href="AboutProductServlet" class="list-group-item" onclick="">All</a>
                         <a href="SearchItemServlet?brand=nike" class="list-group-item" onclick="">Nike</a>
                         <a href="SearchItemServlet?brand=adidas" class="list-group-item" onclick="">Adidas</a>
@@ -36,10 +36,9 @@
                     </div>
                     <p class="lead">Gender</p>
                     <div class="list-group">
-                        <a href="#" class="list-group-item" onclick="">1</a>
-                        <a href="#" class="list-group-item" onclick="">2</a>
-                        <a href="#" class="list-group-item" onclick="">3</a>
-                        <a href="#" class="list-group-item" onclick="">4</a>
+                        <a href="#" class="list-group-item" onclick="">ALL</a>
+                        <a href="#" class="list-group-item" onclick="">MEN</a>
+                        <a href="#" class="list-group-item" onclick="">FEMALE</a>
                     </div>
                 </div>
                 <!--/List.-->
