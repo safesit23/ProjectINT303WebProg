@@ -22,9 +22,9 @@
             var $nav = $(".navbar-brand");
             $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
             if ($(this).scrollTop() > $nav.height()) {
-                document.getElementById("logoSR").innerHTML = '<img src="images/content/logo2.svg" style="margin-top: -10px; margin-right: -15px; width: 45px;" alt="logo">';
+                document.getElementById("logoSR").innerHTML = '<img src="images/content/logo_3.svg" style="margin-top: -10px; margin-right: -15px; width: 45px;" alt="logo">';
             } else {
-                document.getElementById("logoSR").innerHTML = '<img src="images/content/logo.svg" style="margin-top: -10px; margin-right: -15px; width: 45px;" alt="logo">';
+                document.getElementById("logoSR").innerHTML = '<img src="images/content/logo_2.svg" style="margin-top: -10px; margin-right: -15px; width: 45px;" alt="logo">';
             }
         });
     });
@@ -35,7 +35,7 @@
     </button>
     <div class="container-fluid">
         <div>
-            <a id="logoSR" class="navbar-brand" href="index.jsp"><img src="images/content/logo.svg" style="margin-top: -10px; margin-right: -15px; width: 45px;" alt="logo"></a>
+            <a id="logoSR" class="navbar-brand" href="index.jsp"><img src="images/content/logo_2.svg" style="margin-top: -10px; margin-right: -15px; width: 45px;" alt="logo"></a>
             <a class="navbar-brand" href="index.jsp">JKT SHOP</a>
         </div>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
