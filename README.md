@@ -11,18 +11,18 @@ ProjectINT303WebProg/
 └── databaseJKT.sql
 └── ProjectJKTShop/
     ├── web/
-    │   ├── css
+    │   ├── css             : เขียน css
     │   ├── bootstrap
     │   ├── images/
-    |   |      ├── content
-    |   |      ├── carousel
-    |   |      └── shoes
+    |   |      ├── content  : เก็บภาพที่ใช้ตามหน้าต่างๆ
+    |   |      ├── carousel : เก็บภาพ Promotion
+    |   |      └── shoes    : เก็บภาพสินค้าทั้งหมด
     │   ├── include/
     |   |      ├── header.jsp
     |   |      ├── navbar.jsp
     |   |      └── footer.jsp
     │   ├── index.jsp
-    │   └── Page.jsp
+    │   └── Page.jsp       (หน้า JSP ทุกหน้า)
     └── src/java/
         ├── model
         ├── servlet
