@@ -17,6 +17,9 @@
         <jsp:include page="include/navbar.jsp"/>
         <div class="container jktcontent">
             <h1>Product Details: ${shoe.shoeid}</h1>
+            <c:forEach begin = "1" end = "5" var="number">
+            <img src="images/shoes/${shoepic}_0${number}.jpg" alt="${shoepic}_0${number}">
+            </c:forEach>
             <form action="AddItemServlet" method="post">
                 <select name="shoeSize">
                     <c:forEach items="${shoeSize}" var="size">
