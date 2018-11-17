@@ -63,6 +63,9 @@ Have 6 Table:
 for icon in website
 * Example: `<i class="material-icons">person</i>`
 * Change color to white: `class="md-light"`
+
+### [fontawesome](https://fontawesome.com/icons?d=gallery)
+
 ### [Bootstrap v4.1.3](https://getbootstrap.com)
 
 
