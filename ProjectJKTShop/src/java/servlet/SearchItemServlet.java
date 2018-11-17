@@ -43,13 +43,15 @@ public class SearchItemServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         String brand = request.getParameter("brand");
-        System.out.println("-------------------\nBrand:"+brand);
+        String gender = request.getParameter("gender");
         ShoeJpaController shoeCtrl = new ShoeJpaController(utx, emf);
         List<Shoe> shoeList;
         if (brand != null) {
+            System.out.println("---------------------------\nList by Brand:"+brand);
             shoeList = shoeCtrl.findShoeByBrand(brand);
-        } else if (brand != null) {
-            shoeList = shoeCtrl.findShoeByBrand(brand);
+        } else if (gender != null) {
+            System.out.println("---------------------------\nList by Gender:"+gender);
+            shoeList = shoeCtrl.findShoeByGender(gender);
         } else {
             shoeList = shoeCtrl.findShoeEntities();
         }
