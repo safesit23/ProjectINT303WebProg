@@ -51,10 +51,10 @@
                                 <div class="card h-100">
                                     <img class="card-img-top" src="images/shoes/demo.jpg" alt="${shoe.shoename}">
                                     <div class="card-body">
-                                        <h4 class="card-title">
+                                        <h5 class="card-title">
                                             <a href="ProductDetailsServlet?shoeId=${shoe.shoeid}">${shoe.shoename}</a>
-                                        </h4>
-                                        <p class="card-text">About Product</p>
+                                        </h5>
+                                        <p class="card-text">${shoe.price} THB</p>
                                     </div>
                                 </div>
                             </div>
