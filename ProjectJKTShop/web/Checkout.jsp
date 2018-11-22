@@ -55,7 +55,11 @@
                 <div class="col-md-3">
                     <form class="card p-2">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Promocode" <c:if test="${voucher!=null}">disabled</c:if>>
+                            <input type="text" class="form-control" 
+                                   placeholder="<c:choose><c:when test="${voucher!=null}">${voucher.voucherid}</c:when><c:otherwise>Promocode</c:otherwise></c:choose>" 
+                                   name="voucherId" 
+                                   <c:if test="${voucher!=null}">disabled</c:if>
+                            >
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-secondary" <c:if test="${voucher!=null}">disabled</c:if>>Redeem</button>
                             </div>
