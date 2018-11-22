@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-md-12" style="margin-top: 50px;">
                     <h1 class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="text-muted">Your cart</span>
+                        <span class="text-muted">Checkout</span>
                         <span class="badge badge-secondary badge-pill">${cart.totalQuantity}</span>
                     </h1>
                     <ul class="list-group mb-3">
