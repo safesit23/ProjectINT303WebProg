@@ -34,13 +34,16 @@
                                 </span>
                             </li>
                         </c:forEach>
-                        <li class="list-group-item d-flex justify-content-between bg-light">
-                            <div class="text-success">
-                                <h6 class="my-0">Promo code</h6>
-                                <small>EXAMPLECODE</small>
-                            </div>
-                            <span class="text-success">-$5</span>
-                        </li>
+                        <c:if test="${voucher!=null}">
+                            <li class="list-group-item d-flex justify-content-between bg-light">
+                                <div class="text-success">
+                                    <h6 class="my-0">Promo code</h6>
+                                    <small>${voucher.voucherid}</small>
+                                </div>
+                                <span class="text-success">-THB ${voucher.vouchervalue}</span>
+                            </li>
+                        </c:if>
+
                         <li class="list-group-item d-flex justify-content-between">
                             <span>Total (THB)</span>
                             <strong>${sessionScope.cart.totalPrice}</strong>
@@ -52,9 +55,9 @@
                 <div class="col-md-3">
                     <form class="card p-2">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Promo code">
+                            <input type="text" class="form-control" placeholder="Promocode" <c:if test="${voucher!=null}">disabled</c:if>>
                             <div class="input-group-append">
-                                <button type="submit" class="btn btn-secondary">Redeem</button>
+                                <button type="submit" class="btn btn-secondary" <c:if test="${voucher!=null}">disabled</c:if>>Redeem</button>
                             </div>
                         </div>
                     </form>
