@@ -10,6 +10,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Cart;
+import model.Voucher;
 
 /**
  *
@@ -28,6 +31,16 @@ public class CheckoutServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Cart cart = (Cart) session.getAttribute("cart");
+        Voucher voucher = (Voucher) session.getAttribute("voucher");
+//        if (voucher == null) {
+            cart.setTotalNetPrice();
+            session.setAttribute("voucher", null);
+            session.setAttribute("vouchermessage", null);
+//        }else{
+//            cart.setTotalNetPrice(voucher.getVouchervalue());
+//        }
         getServletContext().getRequestDispatcher("/Checkout.jsp").forward(request, response);
     }
 
