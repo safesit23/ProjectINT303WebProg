@@ -20,6 +20,8 @@ public class Cart {
     private Map<String, CartDetail> cart;
     //Key = String SpecificShoe
     //Value = CartDetail(SizeSpecific ss)
+    
+    private double totalNetPrice;
 
     public Cart() {
         cart = new HashMap();
@@ -84,4 +86,17 @@ public class Cart {
         }
         return sum;
     }
+    
+    public void setTotalNetPrice(){
+        this.totalNetPrice = getTotalPrice();
+    }
+    
+    public void setTotalNetPrice(double discount){
+        this.totalNetPrice = getTotalPrice()-discount;
+    }
+
+    public double getTotalNetPrice() {
+        return totalNetPrice;
+    }
+    
 }
