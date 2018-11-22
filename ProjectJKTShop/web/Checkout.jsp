@@ -46,30 +46,33 @@
 
                         <li class="list-group-item d-flex justify-content-between">
                             <span>Total (THB)</span>
-                            <strong>${sessionScope.cart.totalPrice}</strong>
+                            <strong>${sessionScope.cart.totalNetPrice}</strong>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    <form class="card p-2">
+                    <form class="card p-2" action="VoucherServlet" method="post">
                         <div class="input-group">
                             <input type="text" class="form-control" 
-                                   placeholder="<c:choose><c:when test="${voucher!=null}">${voucher.voucherid}</c:when><c:otherwise>Promocode</c:otherwise></c:choose>" 
-                                   name="voucherId" 
-                                   <c:if test="${voucher!=null}">disabled</c:if>
+                                   placeholder="Promocode" 
+                                           name="voucherId" 
+                                   <%--<c:if test="${voucher!=null}">disabled</c:if>--%>
                             >
                             <div class="input-group-append">
-                                <button type="submit" class="btn btn-secondary" <c:if test="${voucher!=null}">disabled</c:if>>Redeem</button>
+                                <button type="submit" class="btn btn-secondary">Redeem</button>
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
+                    <div class="col-md-3 offset-6">
+                        <a href="#"><button class="btn btn-primary btn-lg btn-block" type="submit">Payment</button></a>
+                    </div>
                 </div>
-                <div class="col-md-3 offset-6">
-                    <a href="#"><button class="btn btn-primary btn-lg btn-block" type="submit">Payment</button></a>
-                </div>
-            </div>
+            <c:if test="${vouchermessage!=null}">
+                <div class="alert alert-danger" role="alert">${vouchermessage}</div>
+            </c:if>
         </div>
         <jsp:include page="include/footer.jsp"/>
     </body>
