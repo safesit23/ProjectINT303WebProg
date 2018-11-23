@@ -59,7 +59,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-3 offset-9">
-                            <a href="CheckoutServlet"><button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button></a>
+                            <a href="CheckoutServlet"><button class="btn btn-primary btn-lg btn-block" type="submit">Checkout</button></a>
                         </div>
                     </div>
                 </c:otherwise>
