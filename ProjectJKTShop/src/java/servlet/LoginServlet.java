@@ -5,19 +5,30 @@
  */
 package servlet;
 
+import controller.AccountJpaController;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import javax.annotation.Resource;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.transaction.UserTransaction;
+import model.Account;
 
 /**
  *
  * @author jatawatsafe
  */
 public class LoginServlet extends HttpServlet {
-
+@PersistenceUnit (unitName = "JKTShopPU")
+EntityManagerFactory emf;
+@Resource
+UserTransaction utx;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -29,7 +40,30 @@ public class LoginServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        HttpSession session = request.getSession(true);
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        if(username!=null&&password!=null){
+            AccountJpaController aCtrl = new AccountJpaController(utx, emf);
+            Account acc = aCtrl.findAccountByUsername(username);
+            if(acc!=null){
+                if(acc.getActivatedate()!=null){
+                    String encryptPass = cryptWithMD5(password);
+                    if(encryptPass.equals(acc.getPassword())){
+                        session.setAttribute("account", acc);
+                        request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+                        return;
+                    }else{
+                        request.setAttribute("loginmessage", "Password in correct");
+                    }
+                }else{
+                    request.setAttribute("loginmessage", "Please Activate this Account");
+                }
+            }else{
+                request.setAttribute("loginmessage", "Cannot find this account");
+            }
+        }
+        request.getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -71,4 +105,20 @@ public class LoginServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    public static String cryptWithMD5(String pass) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] passBytes = pass.getBytes();
+            md.reset();
+            byte[] digested = md.digest(passBytes);
+            StringBuffer sb = new StringBuffer();
+            for (int i = 0; i < digested.length; i++) {
+                sb.append(Integer.toHexString(0xff & digested[i]));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException ex) {
+            System.out.println(ex);
+        }
+        return null;
+    }
 }
