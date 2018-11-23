@@ -67,7 +67,7 @@
                         </form>
                     </div>
                     <div class="col-md-3 offset-6">
-                        <a href="#"><button class="btn btn-primary btn-lg btn-block" type="submit">Payment</button></a>
+                        <a href="PaymentServlet"><button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button></a>
                     </div>
                 </div>
             <c:if test="${vouchermessage!=null}">
