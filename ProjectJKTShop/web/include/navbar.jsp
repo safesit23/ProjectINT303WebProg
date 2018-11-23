@@ -51,7 +51,7 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
             <ul class="navbar-nav ml-auto">
                 <c:choose>
-                    <c:when test="${user==null}">
+                    <c:when test="${account==null}">
                         <li class="nav-item">
                             <a class="nav-link" href="Login.jsp"><i class="material-icons md-light">person</i>Register/Login</a>
                         </li>
@@ -59,7 +59,7 @@
                     <c:otherwise>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="material-icons md-light">person</i>Test${account.nickname}</a>
+                                <i class="material-icons md-light">person</i>${account.nickname}</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="#">Edit Account</a>
                                 <a class="dropdown-item" href="#">History</a>
