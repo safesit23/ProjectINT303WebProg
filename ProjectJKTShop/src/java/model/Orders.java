@@ -7,6 +7,8 @@ package model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -84,6 +86,13 @@ public class Orders implements Serializable {
         this.orderid = orderid;
     }
 
+    public Orders(Date orderdate, String shipto, int numDayOfShip, double totalprice) {
+        this.orderdate = orderdate;
+        this.shipto = shipto;
+        setShippeddate(numDayOfShip);
+        this.totalprice = (BigDecimal.valueOf(totalprice));
+    }
+
     public Orders(Integer orderid, Date orderdate, String shipto, Date shippeddate, BigDecimal totalprice) {
         this.orderid = orderid;
         this.orderdate = orderdate;
@@ -120,8 +129,10 @@ public class Orders implements Serializable {
         return shippeddate;
     }
 
-    public void setShippeddate(Date shippeddate) {
-        this.shippeddate = shippeddate;
+    public void setShippeddate(int numDate) {
+        LocalDate localdate =  LocalDate.now().plusDays(numDate);
+        Date date = new Date(localdate.getYear()-1900, localdate.getMonthValue()-1, localdate.getDayOfMonth());
+        this.shippeddate = date;
     }
 
     public BigDecimal getTotalprice() {
@@ -171,7 +182,7 @@ public class Orders implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Orders[ orderid=" + orderid + " ]";
+        return "model.Orders[ orderid=" + orderid + ",OrderDate=" + getOrderdate().toString() + ", ShippedDate=" + getShippeddate().toString() + " ]";
     }
-    
+
 }
