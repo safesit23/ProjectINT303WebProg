@@ -33,14 +33,9 @@ public class CheckoutServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         Cart cart = (Cart) session.getAttribute("cart");
-        Voucher voucher = (Voucher) session.getAttribute("voucher");
-//        if (voucher == null) {
             cart.setTotalNetPrice();
             session.setAttribute("voucher", null);
             session.setAttribute("vouchermessage", null);
-//        }else{
-//            cart.setTotalNetPrice(voucher.getVouchervalue());
-//        }
         getServletContext().getRequestDispatcher("/Checkout.jsp").forward(request, response);
     }
 
