@@ -4,6 +4,7 @@
     Author     : jatawatsafe
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -38,6 +39,9 @@
                     <p class="mt-1 mb-3 text-muted">&copy; 2018-2019</p>
                 </div>
             </form>
+            <c:if test="${loginmessage!=null}">
+                <div class="alert alert-danger" role="alert">${loginmessage}</div>
+            </c:if>
         </div>
         <jsp:include page="include/footer.jsp"/>
     </body>
