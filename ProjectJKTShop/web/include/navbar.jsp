@@ -63,7 +63,7 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="#">Edit Account</a>
                                 <a class="dropdown-item" href="#">History</a>
-                                <a class="dropdown-item" href="#">Logout</a>
+                                <a class="dropdown-item" href="LogoutServlet">Logout</a>
                             </div>
                         </li> 
                     </c:otherwise>
