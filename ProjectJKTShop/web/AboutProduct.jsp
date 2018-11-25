@@ -5,6 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -49,7 +50,8 @@
                             <!-- 1 card-->
                             <div class="col-lg-4 col-md-4 col-sm-6 portfolio-item">
                                 <div class="card h-100">
-                                    <img class="card-img-top" src="images/shoes/demo.jpg" alt="${shoe.shoename}">
+                                    <c:set var="shoeid" value="${shoe.shoeid}" />
+                                    <img class="card-img-top" src="images/shoes/${fn:substringBefore(shoeid, "SH")}_01.jpg" alt="${fn:substringBefore(shoeid, "SH")}_01|${shoe.shoename}">
                                     <div class="card-body">
                                         <h5 class="card-title">
                                             <a href="ProductDetailsServlet?shoeId=${shoe.shoeid}">${shoe.shoename}</a>
