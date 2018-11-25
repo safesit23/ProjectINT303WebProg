@@ -86,11 +86,12 @@ public class Orders implements Serializable {
         this.orderid = orderid;
     }
 
-    public Orders(Date orderdate, String shipto, int numDayOfShip, double totalprice) {
+    public Orders(Date orderdate, String shipto, int numDayOfShip, double totalprice, Account acc) {
         this.orderdate = orderdate;
         this.shipto = shipto;
         setShippeddate(numDayOfShip);
         this.totalprice = (BigDecimal.valueOf(totalprice));
+        this.accountid = acc;
     }
 
     public Orders(Integer orderid, Date orderdate, String shipto, Date shippeddate, BigDecimal totalprice) {
