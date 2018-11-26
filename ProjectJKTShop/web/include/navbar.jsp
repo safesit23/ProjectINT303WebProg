@@ -62,7 +62,7 @@
                                 <i class="material-icons md-light">person</i>${account.nickname}</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="#">Edit Account</a>
-                                <a class="dropdown-item" href="#">History</a>
+                                <a class="dropdown-item" href="HistoryServlet">History</a>
                                 <a class="dropdown-item" href="LogoutServlet">Logout</a>
                             </div>
                         </li> 
