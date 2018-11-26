@@ -61,14 +61,22 @@ public class OrderDetail implements Serializable {
         this.orderDetailPK = orderDetailPK;
     }
 
-    public OrderDetail(OrderDetailPK orderDetailPK, int quantity, BigDecimal price) {
-        this.orderDetailPK = orderDetailPK;
+    public OrderDetail(Orders order,Shoe shoe, int quantity, BigDecimal price, int size) {
+        this.orders = order;
+        this.shoe = shoe;
         this.quantity = quantity;
         this.price = price;
+        this.orderDetailPK = new OrderDetailPK(order.getOrderid(), shoe.getShoeid(), size);
     }
 
     public OrderDetail(int orderid, String shoeid, int shoesize) {
         this.orderDetailPK = new OrderDetailPK(orderid, shoeid, shoesize);
+    }
+    
+    public OrderDetail(int orderid, String shoeid, int shoesize,int quantity, double price) {
+        this.orderDetailPK = new OrderDetailPK(orderid, shoeid, shoesize);
+        this.quantity = quantity;
+        this.price = BigDecimal.valueOf(price);
     }
 
     public OrderDetailPK getOrderDetailPK() {
@@ -133,7 +141,7 @@ public class OrderDetail implements Serializable {
 
     @Override
     public String toString() {
-        return "model.OrderDetail[ orderDetailPK=" + orderDetailPK + " ]";
+        return "OrderDetail [ orderDetailPK=" + orderDetailPK + ", Quantity: "+quantity+", Price="+price+"]";
     }
     
 }
