@@ -29,7 +29,11 @@ public class RegisterServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/Message.jsp").forward(request, response);
+        if(checkParameter(request)){
+            getServletContext().getRequestDispatcher("/Message.jsp").forward(request, response);
+        }else{
+            getServletContext().getRequestDispatcher("/Register.jsp").forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -71,4 +75,11 @@ public class RegisterServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    public boolean checkParameter(HttpServletRequest request){
+        String firstName = request.getParameter("firstName");
+        if(firstName!=null){
+            return true;
+        }
+        return false;
+    }
 }
