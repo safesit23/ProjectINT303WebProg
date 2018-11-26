@@ -16,6 +16,7 @@
         <jsp:include page="include/navbar.jsp"/>
         <div class="container jktcontent" style="min-height: 550px;">
             <h1>Message</h1>
+            <h3>${message}</h3>
         </div>
         <jsp:include page="include/footer.jsp"/>
     </body>
