@@ -5,18 +5,42 @@
  */
 package servlet;
 
+import controller.AccountJpaController;
+import controller.OrderDetailJpaController;
+import controller.OrdersJpaController;
+import controller.ShoeJpaController;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.Resource;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.transaction.UserTransaction;
+import model.Account;
+import model.Cart;
+import model.CartDetail;
+import model.OrderDetail;
+import model.OrderDetailPK;
+import model.Orders;
+import model.Shoe;
 
 /**
  *
  * @author jatawatsafe
  */
 public class PaymentServlet extends HttpServlet {
-
+    @PersistenceUnit(unitName = "JKTShopPU")
+    EntityManagerFactory emf;
+    @Resource
+    UserTransaction utx;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -28,7 +52,44 @@ public class PaymentServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getServletContext().getRequestDispatcher("/Payment.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        String pay = request.getParameter("pay");
+        if (pay != null) {
+            Account acc = (Account) session.getAttribute("account");
+            Cart cart = (Cart) session.getAttribute("cart");
+            Orders orders = new Orders(new Date(),"This place",7,cart.getTotalNetPrice(),acc);
+            OrdersJpaController oCtrl = new OrdersJpaController(utx, emf);
+            OrderDetailJpaController odCtrl = new OrderDetailJpaController(utx, emf);
+            AccountJpaController aCtrl = new AccountJpaController(utx, emf);
+            ShoeJpaController sCtrl = new ShoeJpaController(utx, emf);
+            try {
+                oCtrl.create(orders);
+                System.out.println("<<<<<<Create Order Finish>>>>>>>>");
+                List<CartDetail> details = cart.getCartDetails();
+                int orderid = oCtrl.findOrdersEntities().get(oCtrl.findOrdersEntities().size()-1).getOrderid();
+                System.out.println("Order ID is "+orderid);
+                Orders o = oCtrl.findOrders(orderid);
+                for (CartDetail detail : details) {
+                    Shoe shoe = sCtrl.findShoe(detail.getShoe().getShoeid());
+                    int shoesize = detail.getShoeSize();
+                    int quantity = detail.getQuantity();
+                    double price = detail.getTotalPrice();
+                    OrderDetail orderDetail = new OrderDetail(o, shoe, quantity, BigDecimal.valueOf(price),shoesize);
+                    System.out.print("\n---------Order Detail:"+orderDetail.toString()+"\n");
+                    odCtrl.create(orderDetail);
+                    System.out.println("<--------ADD one Detail Success");
+                }
+                System.out.println("<<<<<<<<ALL Order Detail Finish>>>>>>>>>>");
+                request.setAttribute("message", "finish");
+            } catch (Exception ex) {
+                Logger.getLogger(PaymentServlet.class.getName()).log(Level.SEVERE, null, ex);
+                request.setAttribute("message", "error");
+            }
+            
+            request.getServletContext().getRequestDispatcher("/Message.jsp").forward(request, response);
+        } else {
+            request.getServletContext().getRequestDispatcher("/Payment.jsp").forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
