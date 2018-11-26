@@ -6,17 +6,28 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
+import javax.annotation.Resource;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.transaction.UserTransaction;
+import model.Account;
+import model.Orders;
 
 /**
  *
  * @author jatawatsafe
  */
 public class HistoryServlet extends HttpServlet {
-
+@PersistenceUnit(unitName = "JKTShopPU")
+EntityManagerFactory emf;
+@Resource
+UserTransaction utx;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -28,7 +39,11 @@ public class HistoryServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        HttpSession session = request.getSession();
+        Account acc = (Account) session.getAttribute("account");
+        List<Orders> history = acc.getOrdersList();
+        request.setAttribute("history", history);
+        request.getServletContext().getRequestDispatcher("/History.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
