@@ -43,8 +43,12 @@ public class OrderDetailJpaController implements Serializable {
         if (orderDetail.getOrderDetailPK() == null) {
             orderDetail.setOrderDetailPK(new OrderDetailPK());
         }
+        System.out.print("..1");
         orderDetail.getOrderDetailPK().setShoeid(orderDetail.getShoe().getShoeid());
+        System.out.print("..2");
         orderDetail.getOrderDetailPK().setOrderid(orderDetail.getOrders().getOrderid());
+        System.out.print("..3");
+        orderDetail.getOrderDetailPK().setShoesize(orderDetail.getOrderDetailPK().getShoesize());
         EntityManager em = null;
         try {
             utx.begin();
