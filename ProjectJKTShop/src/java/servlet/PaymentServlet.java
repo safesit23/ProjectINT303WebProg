@@ -80,12 +80,12 @@ public class PaymentServlet extends HttpServlet {
                     System.out.println("<--------ADD one Detail Success");
                 }
                 System.out.println("<<<<<<<<ALL Order Detail Finish>>>>>>>>>>");
-                request.setAttribute("message", "finish");
+                session.removeAttribute("cart");
+                request.setAttribute("message", "การซื้อสินค้าเสร็จสมบูรณ์ สินค้าจะถูกจัดส่งเมื่อ "+o.getShippeddate().toString());
             } catch (Exception ex) {
                 Logger.getLogger(PaymentServlet.class.getName()).log(Level.SEVERE, null, ex);
-                request.setAttribute("message", "error");
+                request.setAttribute("message", "การสั่งซื้อไม่สำเร็จกรุณาลองใหม่อีกครั้ง");
             }
-            
             request.getServletContext().getRequestDispatcher("/Message.jsp").forward(request, response);
         } else {
             request.getServletContext().getRequestDispatcher("/Payment.jsp").forward(request, response);
