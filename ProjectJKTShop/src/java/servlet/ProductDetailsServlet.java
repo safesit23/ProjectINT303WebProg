@@ -52,7 +52,7 @@ UserTransaction utx;
                 int size = ss.getSizeSpecificPK().getShoesize();
                 shoeSize.add(size);
             }
-            request.setAttribute("shoepic", shoe.getShoeid().substring(0, 5).toLowerCase());
+            request.setAttribute("shoepic", shoe.getShoeid().substring(0, 5).toUpperCase());
             request.setAttribute("shoe",shoe);
             request.setAttribute("shoeSize",shoeSize);
         }
