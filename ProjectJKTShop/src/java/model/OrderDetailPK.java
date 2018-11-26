@@ -96,7 +96,7 @@ public class OrderDetailPK implements Serializable {
 
     @Override
     public String toString() {
-        return "model.OrderDetailPK[ orderid=" + orderid + ", shoeid=" + shoeid + ", shoesize=" + shoesize + " ]";
+        return "OdPK(orderid=" + orderid + ", shoeid=" + shoeid + ", shoesize=" + shoesize + ")";
     }
     
 }
