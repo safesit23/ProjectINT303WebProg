@@ -24,6 +24,8 @@
                         <th scope="col">OrderId</th>
                         <th scope="col">OrderDate</th>
                         <th scope="col">Shipped To</th>
+                        <th scope="col">Shipped Date</th>
+                        <th scope="col">Total price</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,6 +35,8 @@
                         <td>${order.orderid}</td>
                         <td>${order.orderdate}</td>
                         <td>${order.shipto}</td>
+                        <td>${order.shippeddate}</td>
+                        <td>${order.totalprice}</td>
                     </tr>
                     </c:forEach>
                 </tbody>
