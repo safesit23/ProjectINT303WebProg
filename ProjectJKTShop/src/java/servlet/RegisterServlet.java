@@ -52,7 +52,7 @@ public class RegisterServlet extends HttpServlet {
                 Account account = getRegisterAccount(request);
                 try {
                     aCtrl.create(account);
-                    String link = "ActivateServlet?activate="+account.getActivatekey();
+                    String link = "ActivateServlet?email="+account.getUsername()+"&activate="+account.getActivatekey();
                     request.setAttribute("activatekey", link);
                     getServletContext().getRequestDispatcher("/Message.jsp").forward(request, response);
                     return;
