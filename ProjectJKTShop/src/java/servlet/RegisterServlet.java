@@ -30,7 +30,16 @@ public class RegisterServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if(checkParameter(request)){
-            getServletContext().getRequestDispatcher("/Message.jsp").forward(request, response);
+            String username = request.getParameter("username");
+            AccountJpaController aCtrl = new AccountJpaController(utx, emf);
+            Account checkAcc = aCtrl.findAccountByUsername(username);
+            if(checkAcc==null){
+                
+                getServletContext().getRequestDispatcher("/Message.jsp").forward(request, response);
+            }else{
+                request.setAttribute("messageRegister", "This email has already register");
+                getServletContext().getRequestDispatcher("/Register.jsp").forward(request, response);
+            }
         }else{
             getServletContext().getRequestDispatcher("/Register.jsp").forward(request, response);
         }
