@@ -7,9 +7,11 @@ package servlet;
 
 import controller.AccountJpaController;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
@@ -25,10 +27,12 @@ import model.Account;
  * @author jatawatsafe
  */
 public class RegisterServlet extends HttpServlet {
-@PersistenceUnit(unitName = "JKTShopPU")
-EntityManagerFactory emf;
-@Resource
-UserTransaction utx;
+
+    @PersistenceUnit(unitName = "JKTShopPU")
+    EntityManagerFactory emf;
+    @Resource
+    UserTransaction utx;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -40,20 +44,28 @@ UserTransaction utx;
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if(checkParameter(request)){
+        if (checkParameter(request)) {
             String username = request.getParameter("username");
             AccountJpaController aCtrl = new AccountJpaController(utx, emf);
             Account checkAcc = aCtrl.findAccountByUsername(username);
-            if(checkAcc==null){
-                
-                getServletContext().getRequestDispatcher("/Message.jsp").forward(request, response);
-            }else{
+            if (checkAcc == null) {
+                Account account = getRegisterAccount(request);
+                try {
+                    aCtrl.create(account);
+                    String link = "ActivateServlet?activate="+account.getActivatekey();
+                    request.setAttribute("activatekey", link);
+                    getServletContext().getRequestDispatcher("/Message.jsp").forward(request, response);
+                    return;
+                } catch (Exception ex) {
+                    Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                request.setAttribute("messageRegister", "Not Success");
+            } else {
                 request.setAttribute("messageRegister", "This email has already register");
-                getServletContext().getRequestDispatcher("/Register.jsp").forward(request, response);
             }
-        }else{
-            getServletContext().getRequestDispatcher("/Register.jsp").forward(request, response);
         }
+        getServletContext().getRequestDispatcher("/Register.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
