@@ -38,9 +38,9 @@
                                 <input type="text" class="form-control" name="nickname" required>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label>Birth of Date</label>
+                                <label>Birth of Date <sup> *</sup></label>
                                 <div>
-                                    <input class="form-control" type="date"  name="dob">
+                                    <input class="form-control" type="date"  name="dob" required>
                                 </div>
                             </div>
                         </div>
@@ -67,11 +67,11 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label>Password<sup> *</sup></label>
-                                <input type="text" class="form-control" name="password" required>
+                                <input type="password" class="form-control" name="password" required>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label>Confirm Password<sup> *</sup></label>
-                                <input type="text" class="form-control" name="confirmPassword" required>
+                                <input type="password" class="form-control" name="confirmPassword" required>
                             </div>
                         </div>
 
