@@ -112,6 +112,27 @@ UserTransaction utx;
         }
         return false;
     }
+
+    public Account getRegisterAccount(HttpServletRequest request) {
+        String firstName = request.getParameter("firstName");
+        String lastName = request.getParameter("lastName");
+        String nickname = request.getParameter("nickname");
+        String sex = request.getParameter("sex");
+        String phone = request.getParameter("phone");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String cryptPass = cryptWithMD5(password);
+        String dobText = request.getParameter("dob");
+        Date dob = Date.valueOf(dobText);
+        String address = request.getParameter("address");
+        String province = request.getParameter("province");
+        String postalCode = request.getParameter("postalCode");
+        String country = request.getParameter("country");
+        String activatekey = cryptWithMD5(username);
+        Account account = new Account(username, cryptPass, firstName, lastName, nickname, sex, dob ,phone, address, province, postalCode, country, activatekey);
+        return account;
+    }
+
     public static String cryptWithMD5(String pass) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
