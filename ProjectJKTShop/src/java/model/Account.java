@@ -125,6 +125,22 @@ public class Account implements Serializable {
     public Account(Integer accountid) {
         this.accountid = accountid;
     }
+    
+    public Account(String username, String password, String firstname, String lastname, String nickname, String sex, Date dob ,String phone, String address, String province, String postalCode, String country, String activatekey) {
+        this.username = username;
+        this.password = password;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.nickname = nickname;
+        this.sex = sex.charAt(0);
+        this.dob = dob;
+        this.phone = phone;
+        this.address = address;
+        this.province = province;
+        this.postalcode = postalCode;
+        this.country = country;
+        this.activatekey = activatekey;
+    }
 
     public Account(Integer accountid, String username, String password, String firstname, String lastname, String nickname, Character sex, String phone, String activatekey) {
         this.accountid = accountid;
