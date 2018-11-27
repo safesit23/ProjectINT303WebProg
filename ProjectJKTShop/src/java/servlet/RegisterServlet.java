@@ -95,10 +95,20 @@ UserTransaction utx;
         return "Short description";
     }// </editor-fold>
 
-    public boolean checkParameter(HttpServletRequest request){
+    public boolean checkParameter(HttpServletRequest request) {
         String firstName = request.getParameter("firstName");
-        if(firstName!=null){
-            return true;
+        String lastName = request.getParameter("lastName");
+        String nickname = request.getParameter("nickname");
+        String sex = request.getParameter("sex");
+        String phone = request.getParameter("phone");
+        String dobText = request.getParameter("dob");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String confirmPassword = request.getParameter("confirmPassword");
+        if (firstName != null && lastName != null && nickname != null && sex != null && phone != null &&dobText!= null) {
+            if (username!=null && password!=null && confirmPassword!=null) {
+                return true;
+            }
         }
         return false;
     }
