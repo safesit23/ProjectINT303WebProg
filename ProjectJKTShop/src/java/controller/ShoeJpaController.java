@@ -314,4 +314,16 @@ public class ShoeJpaController implements Serializable {
         }
     }
     
+    public List<Shoe> findShoeByPrice(int priceMin, int priceMax){
+        EntityManager em = getEntityManager();
+        try{
+            Query query = em.createNamedQuery("Shoe.findByPrice");
+            query.setParameter("priceMin", priceMin);
+            query.setParameter("priceMax", priceMax);
+            return query.getResultList();
+        }finally{
+            em.close();
+        }
+    }
+    
 }   
