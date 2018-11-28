@@ -45,7 +45,7 @@ public class SearchItemServlet extends HttpServlet {
         String brand = request.getParameter("brand");
         String gender = request.getParameter("gender");
         String shoename = request.getParameter("shoename");
-        String price = request.getParameter("price");
+        String pricetext = request.getParameter("price");
         ShoeJpaController shoeCtrl = new ShoeJpaController(utx, emf);
         List<Shoe> shoeList;
         if (brand != null) {
@@ -57,9 +57,12 @@ public class SearchItemServlet extends HttpServlet {
         } else if (shoename!=null){
             System.out.println("---------------------------\nList by shoename:"+shoename);
             shoeList = shoeCtrl.findByShoename(shoename);
-        } else if (price!=null){
-            System.out.println("---------------------------\nList by Price:"+price);
-            shoeList = shoeCtrl.findByShoename(shoename);
+        } else if (pricetext!=null){
+            String[] p = pricetext.split(",");
+            int priceMin = Integer.valueOf(p[0]);
+            int priceMax = Integer.valueOf(p[1]);
+            System.out.println("---------------------------\nList by Price:"+priceMin+" to "+priceMax);
+            shoeList = shoeCtrl.findShoeByPrice(priceMin, priceMax);
         } else {
             shoeList = shoeCtrl.findShoeEntities();
         }
