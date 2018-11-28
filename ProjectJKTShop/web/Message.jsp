@@ -19,7 +19,7 @@
             <h1>Message</h1>
             <h3>${message}</h3>
             <c:if test="${activatekey!=null}">
-                <h4>Please Activate Email by this link<br><a href="#">${activatekey}</a></h4>
+                <h4>Please Activate Email by this link<br><a href="${activatekey}">${activatekey}</a></h4>
             </c:if>
         </div>
         <jsp:include page="include/footer.jsp"/>
