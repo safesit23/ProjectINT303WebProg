@@ -4,6 +4,7 @@
     Author     : jatawatsafe
 --%>
 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -33,9 +34,9 @@
                     <tr>
                         <th scope="row">${vs.count}</th>
                         <td>${order.orderid}</td>
-                        <td>${order.orderdate}</td>
+                        <td><fmt:formatDate value="${order.orderdate}" type = "date" /></td>
                         <td>${order.shipto}</td>
-                        <td>${order.shippeddate}</td>
+                        <td><fmt:formatDate value="${order.shippeddate}" type = "date" /></td>
                         <td>${order.totalprice}</td>
                     </tr>
                     </c:forEach>
