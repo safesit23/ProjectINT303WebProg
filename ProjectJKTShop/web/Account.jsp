@@ -21,32 +21,68 @@
                 <div class="col-md-3 pt-3">
                     <div class="row justify-content-center" style="padding: 100px;">
                         <img src="images/content/IconPeople.svg">
-                        <h3 class="mt-3 mb-3">Hello, ${account.nickname}</h3>
-                        <a href=""><button class="btn btn-outline-dark btn-sm">Edit Profile</button></a>
+                        <h3 class="mt-3 mb-1">Hello, ${account.nickname}</h3>
+                        <p class="mb-4">${account.username}</p>
+                        <a href="AccountServlet?editAccount=yes"><button class="btn btn-outline-dark btn-sm">Edit Profile</button></a>
                     </div>
                 </div>
                 <div class="col-md-9 pt-3" style="background-color: #EEEEEE;">
                     <div class="row" style="padding: 100px;">
-                        <div class="col-md-12 mb-4">
-                            <h2>ข้อมูลทั่วไป</h2>
-                            <hr>
-                            <h5>ชื่อ: ${account.firstname}  <span class="pr-4"></span>นามสกุล: ${account.lastname}</h5>
-                            <h5>ชื่อเล่น: ${account.nickname}</h5>
-                            <h5>เพศ: 
-                                <c:choose>
-                                    <c:when test="${account.sex=='M'}">ชาย</c:when>
-                                    <c:otherwise>หญิง</c:otherwise>
-                                </c:choose>
-                            </h5>
-                            <h5>วันเกิด: <fmt:formatDate value="${account.dob}" type = "date" /> </h5>
-                            <h5>เบอร์โทรศัพท์: ${account.phone}</h5>
+                        <c:choose>
+                            <c:when test="${editAccount!=null}">
+                                <div class="col-md-12 mb-4">
+                                    <form  action="AccountServlet" method="post">
+                                        <h2>ข้อมูลทั่วไป</h2>
+                                        <hr>
+                                        <div class="form-row">
+                                            <div class="col-md-4 mb-3">
+                                                <label>ชื่อ</label>
+                                                <input type="text" class="form-control"  value="Mark" required>
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <label>นามสกุล</label>
+                                                <input type="text" class="form-control" value="Otto" required>
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <label>ชื่อเล่น</label>
+                                                <input type="text" class="form-control" value="Otto" required>
+                                            </div>
+                                            
+                                        </div>
+                                        <h2>ที่อยู่</h2>
+                                        <hr>
 
-                        </div>
-                        <div class="col-md-12 mt-4">
-                            <h2>ที่อยู่</h2>
-                            <hr>
-                            <h5>${account.address}, ${account.province}, ${account.country} ${account.postalcode}</h5>
-                        </div>
+
+
+
+
+                                    </form>
+                                </div>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="col-md-12 mb-4">
+                                    <h2>ข้อมูลทั่วไป</h2>
+                                    <hr>
+                                    <h5>ชื่อ: ${account.firstname}  <span class="pr-4"></span>นามสกุล: ${account.lastname}</h5>
+                                    <h5>ชื่อเล่น: ${account.nickname}</h5>
+                                    <h5>เพศ: 
+                                        <c:choose>
+                                            <c:when test="${account.sex=='M'}">ชาย</c:when>
+                                            <c:otherwise>หญิง</c:otherwise>
+                                        </c:choose>
+                                    </h5>
+                                    <h5>วันเกิด: <fmt:formatDate value="${account.dob}" type = "date" /> </h5>
+                                    <h5>เบอร์โทรศัพท์: ${account.phone}</h5>
+
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <h2>ที่อยู่</h2>
+                                    <hr>
+                                    <h5>${account.address}, ${account.province}, ${account.country} ${account.postalcode}</h5>
+                                </div>
+                            </c:otherwise>
+                        </c:choose>
+
 
 
 
