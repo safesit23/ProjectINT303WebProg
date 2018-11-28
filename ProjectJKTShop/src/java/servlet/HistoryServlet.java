@@ -40,6 +40,7 @@ UserTransaction utx;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
+        System.out.println("-------HistoryServlet-----");
         Account acc = (Account) session.getAttribute("account");
         List<Orders> history = acc.getOrdersList();
         request.setAttribute("history", history);
