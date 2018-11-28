@@ -17,8 +17,8 @@
     <body>
         <jsp:include page="include/navbar.jsp"/>
         <div class="container jktcontent">
-            <h1>History</h1>
-            <table class="table">
+            <h1 class="mb-3">History</h1>
+            <table class="table table-hover">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>
@@ -33,7 +33,7 @@
                     <c:forEach items="${history}" var="order" varStatus="vs">
                     <tr>
                         <th scope="row">${vs.count}</th>
-                        <td>${order.orderid}</td>
+                        <td><a href="HistoryDetailsServlet?orderid=${order.orderid}">${order.orderid}</a></td>
                         <td><fmt:formatDate value="${order.orderdate}" type = "date" /></td>
                         <td>${order.shipto}</td>
                         <td><fmt:formatDate value="${order.shippeddate}" type = "date" /></td>
