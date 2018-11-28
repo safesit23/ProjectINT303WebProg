@@ -57,21 +57,26 @@
                         <div class="input-group">
                             <input type="text" class="form-control" 
                                    placeholder="Promocode" 
-                                           name="voucherId" 
+                                   name="voucherId" 
                                    <%--<c:if test="${voucher!=null}">disabled</c:if>--%>
-                            >
+                                   >
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-secondary">Redeem</button>
-                                </div>
                             </div>
-                        </form>
-                    </div>
-                    <div class="col-md-3 offset-6">
-                        <a href="PaymentServlet"><button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button></a>
-                    </div>
+                        </div>
+                    </form>
                 </div>
+                <div class="col-md-3 offset-6">
+                    <a href="PaymentServlet"><button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button></a>
+                </div>
+            </div>
             <c:if test="${vouchermessage!=null}">
-                <div class="alert alert-danger" role="alert">${vouchermessage}</div>
+                <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+                    ${vouchermessage}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
             </c:if>
         </div>
         <jsp:include page="include/footer.jsp"/>
