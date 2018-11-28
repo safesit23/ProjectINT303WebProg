@@ -58,16 +58,13 @@ public class AddItemServlet extends HttpServlet {
             SizeSpecificJpaController ssCtrl = new SizeSpecificJpaController(utx, emf);
             Shoe shoe = sCtrl.findShoe(shoeId);
             SizeSpecific ss = new SizeSpecific(shoeId, shoeSize);
-            System.out.println("----------------------\nSizeSpecific:"+ss.getSizeSpecificPK().getSpecificShoe());
+            System.out.println("----------------------\nSizeSpecific:" + ss.getSizeSpecificPK().getSpecificShoe());
             cart.add(shoe, shoeSize);
         }
-        String page = request.getParameter("page");
-        if(page!=null){
-            response.sendRedirect("Cart.jsp");
-        }else{
-            response.sendRedirect("AboutProductServlet");
-        }
+        response.sendRedirect(request.getParameter("from"));
+
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

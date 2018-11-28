@@ -17,6 +17,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
 import model.Shoe;
 import model.SizeSpecific;
@@ -43,6 +44,7 @@ UserTransaction utx;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String shoeId = request.getParameter("shoeId");
+        HttpSession session = request.getSession();
         if(shoeId!=null){
             ShoeJpaController sCtrl = new ShoeJpaController(utx, emf);
             Shoe shoe = sCtrl.findShoe(shoeId);
@@ -52,9 +54,9 @@ UserTransaction utx;
                 int size = ss.getSizeSpecificPK().getShoesize();
                 shoeSize.add(size);
             }
-            request.setAttribute("shoepic", shoe.getShoeid().substring(0, 5).toUpperCase());
-            request.setAttribute("shoe",shoe);
-            request.setAttribute("shoeSize",shoeSize);
+            session.setAttribute("shoepic", shoe.getShoeid().substring(0, 5).toUpperCase());
+            session.setAttribute("shoe",shoe);
+            session.setAttribute("shoeSize",shoeSize);
         }
         getServletContext().getRequestDispatcher("/ProductDetails.jsp").forward(request, response);
     }

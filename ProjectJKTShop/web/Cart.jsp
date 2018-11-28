@@ -37,7 +37,7 @@
                                             <small class="text-muted">Size: US${line.shoeSize}</small>
                                         </div>
                                         <span>
-                                            <a href="AddItemServlet?shoeId=${line.shoe.shoeid}&shoeSize=${line.shoeSize}&page=cart.jsp" class="mr-2"><i class="material-icons">add_shopping_cart</i></a>
+                                            <a href="AddItemServlet?shoeId=${line.shoe.shoeid}&shoeSize=${line.shoeSize}&from=${pageContext.request.requestURI}" class="mr-2"><i class="material-icons">add_shopping_cart</i></a>
                                             <a href="RemoveItemServlet?shoeId=${line.shoe.shoeid}&shoeSize=${line.shoeSize}&page=cart.jsp" class="mr-4"><i class="material-icons">remove_shopping_cart</i></a>
                                             <span class="text-muted">${line.quantity} x ${line.shoe.price} THB</span>
                                         </span>
