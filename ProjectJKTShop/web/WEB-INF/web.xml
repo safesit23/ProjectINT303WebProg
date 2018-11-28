@@ -52,6 +52,10 @@
         <servlet-name>ActivateServlet</servlet-name>
         <servlet-class>servlet.ActivateServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HistoryDetailsServlet</servlet-name>
+        <servlet-class>servlet.HistoryDetailsServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -103,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>ActivateServlet</servlet-name>
         <url-pattern>/ActivateServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HistoryDetailsServlet</servlet-name>
+        <url-pattern>/HistoryDetailsServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
