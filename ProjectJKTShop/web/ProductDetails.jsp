@@ -56,6 +56,7 @@
                                                 <option value="${size}">US ${size}</option>
                                             </c:forEach>
                                         </select>
+                                <input type="hidden" name="from" value="${pageContext.request.requestURI}">
                                 <button type="submit" class="btn btn-primary" name="shoeId" value="${shoe.shoeid}">Buy</button>
                             </form>
                         </div>
