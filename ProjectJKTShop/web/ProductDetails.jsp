@@ -18,19 +18,20 @@
         <div class="container jktcontent">
             <div class="row">
                 <div class="col-md-4" style="color: yellow; height: 100px;">
-
                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
                             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
                         </ol>
                         <div class="carousel-inner">
-                            <c:forEach begin = "1" end = "5" var="number">
-                                <div class="carousel-item active">
-                                    <img class="d-block w-50" src="images/shoes/${shoepic}_0${number}.jpg" alt="${shoepic}_0${number}">
+                            <c:forEach begin = "1" end = "4" var="number">
+                                <div class="carousel-item <c:if test="${number==1}">active</c:if>">
+                                    <img class="d-block w-100" src="images/shoes/${shoepic}_0${number}.jpg" alt="${shoepic}_0${number}">
                                 </div>
                             </c:forEach>
+
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -40,9 +41,10 @@
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>
-                    </div><!--carouselExampleIndicators-->
+                    </div><!--/Carousel-->
                 </div><!--col-md-4-->
-                <div class="col-md-6 offset-2">
+                
+                <div class="col-md-6 offset-1">
                     <h1>${shoe.shoename}</h1>
                     <div class="row mt-4">
                         <div class="col-md-5 offset-1">
@@ -51,11 +53,11 @@
                             <p>Brand: ${shoe.brand}</p>
                             <form action="AddItemServlet" method="post" class="form-inline">
                                 <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Size:</label>
-                                        <select name="shoeSize" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                                            <c:forEach items="${shoeSize}" var="size">
-                                                <option value="${size}">US ${size}</option>
-                                            </c:forEach>
-                                        </select>
+                                <select name="shoeSize" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                                    <c:forEach items="${shoeSize}" var="size">
+                                        <option value="${size}">US ${size}</option>
+                                    </c:forEach>
+                                </select>
                                 <input type="hidden" name="from" value="${pageContext.request.requestURI}">
                                 <button type="submit" class="btn btn-primary" name="shoeId" value="${shoe.shoeid}">Buy</button>
                             </form>
