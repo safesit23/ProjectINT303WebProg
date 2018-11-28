@@ -78,7 +78,7 @@
                         <hr>
                         <div class="mb-3">
                             <label>Address <span class="text-muted">(Optional)</span></label>
-                            <input type="text" class="form-control" placeholder="Apartment or suite">
+                            <input type="text" class="form-control" name="address" placeholder="Apartment or suite">
                         </div>
                         <div class="row">
                             <div class="col-md-5 mb-3">
