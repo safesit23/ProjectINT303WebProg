@@ -47,9 +47,9 @@
                         <a href="SearchItemServlet?gender=MEN" class="list-group-item">MEN</a>
                         <a href="SearchItemServlet?gender=WOMEN" class="list-group-item">WOMEN</a>
                     </div>
-                    <p class="lead">Price</p>
                     <form action="SearchItemServlet" method="post">
-                        <select class="custom-select" name="price" onchange="this.form.submit()">
+                        <p class="lead">Price</p>
+                        <select class="custom-select mb-4" name="price" onchange="this.form.submit()">
                             <option>Select Price</option>
                             <option value="1000,2000">1000-2000</option>
                             <option value="2000,3000">2000-3000</option>
@@ -59,7 +59,16 @@
                             <option value="6000,100000">more than 6000</option>
                         </select>
                     </form>
-
+                    <form action="SearchItemServlet" method="post">
+                    <p class="lead">Color</p>
+                        <select class="custom-select mb-4" name="color" onchange="this.form.submit()">
+                            <option>Select Color</option>
+                            <option value="black">Black</option>
+                            <option value="white">White</option>
+                            <option value="grey">Grey</option>
+                            <option value="navy">Navy</option>
+                        </select>
+                    </form>
                 </div>
                 <!--/List.-->
                 <!--Product col-md-9 -->
