@@ -53,7 +53,7 @@
                 <c:choose>
                     <c:when test="${account==null}">
                         <li class="nav-item">
-                            <a class="nav-link" href="Login.jsp"><i class="material-icons md-light">person</i>Register/Login</a>
+                            <a class="nav-link" href="LoginServlet?from=${pageContext.request.requestURI}"><i class="material-icons md-light">person</i>Register/Login</a>
                         </li>
                     </c:when>
                     <c:otherwise>

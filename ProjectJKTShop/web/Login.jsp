@@ -28,6 +28,7 @@
                 <input type="email" id="inputEmail" class="form-control" placeholder="Username" name="username" required autofocus>
                 <label for="inputPassword" class="sr-only">Password</label>
                 <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+                <input type="hidden" name="from" value="${param.from}">
                 <div class="checkbox mb-3">
                     <label>
                         <input type="checkbox" value="remember-me"> Remember me

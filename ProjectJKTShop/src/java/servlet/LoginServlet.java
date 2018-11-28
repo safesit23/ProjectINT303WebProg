@@ -51,7 +51,7 @@ UserTransaction utx;
                     String encryptPass = cryptWithMD5(password);
                     if(encryptPass.equals(acc.getPassword())){
                         session.setAttribute("account", acc);
-                        request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+                        response.sendRedirect(request.getParameter("from"));
                         return;
                     }else{
                         request.setAttribute("loginmessage", "Password in correct");
@@ -62,8 +62,11 @@ UserTransaction utx;
             }else{
                 request.setAttribute("loginmessage", "Cannot find this account");
             }
+            request.getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
+        }else{
+            request.getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
         }
-        request.getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

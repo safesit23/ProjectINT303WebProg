@@ -54,7 +54,8 @@ public class ActivateServlet extends HttpServlet {
                     account.setActivatedate(new Date());
                     try {
                         aCtrl.edit(account);
-                        request.setAttribute("message", "Activate Successful");
+                        request.setAttribute("message", "Activate Successful<br>"
+                                + "Voucher for new Member : NEW100");
                         getServletContext().getRequestDispatcher("/Message.jsp").forward(request, response);
                         return;
                     } catch (NonexistentEntityException ex) {
