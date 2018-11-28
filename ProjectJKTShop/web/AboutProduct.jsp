@@ -26,7 +26,13 @@
             <div class="row">
                 <!--List col-md-3 -->
                 <div class="col-md-3">
-                    <p class="lead" style="margin-top: 5px;">Brand</p>
+                    <div class="mb-4" style="margin-top: 5px;">
+                        <form class="form-inline my-2 my-lg-0" action="SearchItemServlet" method="post">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="shoename">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="material-icons">search</i></button>
+                        </form>
+                    </div>
+                    <p class="lead" >Brand</p>
                     <div class="list-group mb-4">
                         <a href="AboutProductServlet" class="list-group-item">All</a>
                         <a href="SearchItemServlet?brand=nike" class="list-group-item">Nike</a>
@@ -36,11 +42,12 @@
                         <a href="SearchItemServlet?brand=new balance" class="list-group-item">New Balance</a>
                     </div>
                     <p class="lead">Gender</p>
-                    <div class="list-group">
+                    <div class="list-group mb-4">
                         <a href="AboutProductServlet" class="list-group-item">ALL</a>
                         <a href="SearchItemServlet?gender=MEN" class="list-group-item">MEN</a>
                         <a href="SearchItemServlet?gender=WOMEN" class="list-group-item">WOMEN</a>
                     </div>
+
                 </div>
                 <!--/List.-->
                 <!--Product col-md-9 -->
