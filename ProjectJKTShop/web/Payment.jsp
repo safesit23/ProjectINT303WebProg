@@ -23,121 +23,109 @@
                 <div class="col-md-8 shadow offset-1 pt-2" style="background-color: #EEEEEE;">
                     <form action="PaymentServlet" method="post">
                         <div class="mt-3">
-
-                            <h4>Address</h4>
+                            <!--TypeOfAddr-->
                             <div class="custom-control custom-radio">
-                                <input id="MyAddress" name="addr" type="radio" class="custom-control-input" onclick="changeAddr('myAddress')" required>
+                                <input id="MyAddress" name="TypeOfAddr" value="MyAddress" type="radio" class="custom-control-input" onclick="changeAddr('myAddress')" checked required>
                                 <label class="custom-control-label" for="MyAddress">My Address</label>
                             </div>
                             <div class="custom-control custom-radio">
-                                <input id="NewAddress" name="addr" type="radio" class="custom-control-input" onclick="changeAddr('newAddress')">
+                                <input id="NewAddress" name="TypeOfAddr" value="NewAddress" type="radio" class="custom-control-input" onclick="changeAddr('newAddress')">
                                 <label class="custom-control-label" for="NewAddress">New Address</label>
                             </div>
-                            <div><!--Use Javascript to Show-->
-                                <div id="myAddress" class="mt-3" hidden><!--My Addr-->
-                                    <div class="mb-3">
-                                        <label>Address <span class="text-muted"></span></label>
-                                        <input type="text" class="form-control" name="address" value="${account.address}" disabled>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-5 mb-3">
-                                            <label>Province</label>
-                                            <input type="text" class="form-control" name="province" value="${account.province}" disabled>
-                                        </div>
-                                        <div class="col-md-4 mb-3">
-                                            <label>Province</label>
-                                            <input type="text" class="form-control" name="country" value="${account.country}" disabled>
-                                        </div>
-                                        <div class="col-md-3 mb-3">
-                                            <label>Postal Code</label>
-                                            <input type="text" class="form-control" name="postalCode" value="${account.postalcode}" disabled>
-                                        </div>
-                                    </div>
+                            <!--Use Javascript to Show-->
+                            <!--My Addr-->
+                            <div id="myAddress" class="mt-3">
+                                <div class="mb-3">
+                                    <label>Address <span class="text-muted"></span></label>
+                                    <input type="text" class="form-control" name="ac.ad" value="${account.address}" disabled>
                                 </div>
-                                <div id="newAddress" class="mt-3" hidden><!--New Addr-->
-                                    <div class="mb-3">
-                                        <label>Address <span class="text-muted"></span></label>
-                                        <input type="text" class="form-control" name="address">
+                                <div class="row">
+                                    <div class="col-md-5 mb-3">
+                                        <label>Province</label>
+                                        <input type="text" class="form-control" name="ac.pr" value="${account.province}" disabled>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-5 mb-3">
-                                            <label>Province</label>
-                                            <input type="text" class="form-control" name="province">
-                                        </div>
-                                        <div class="col-md-4 mb-3">
-                                            <label>Province</label>
-                                            <input type="text" class="form-control" name="country">
-                                        </div>
-                                        <div class="col-md-3 mb-3">
-                                            <label>Postal Code</label>
-                                            <input type="text" class="form-control" name="postalCode">
-                                        </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label>Country</label>
+                                        <input type="text" class="form-control" name="ac.c" value="${account.country}" disabled>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label>Postal Code</label>
+                                        <input type="text" class="form-control" name="ac.p" value="${account.postalcode}" disabled>
                                     </div>
                                 </div>
                             </div>
+                            <!--New Addr--> 
+                            <div id="newAddress" class="mt-3" hidden><!--New Addr-->
+                                <div class="mb-3">
+                                    <label>Address <span class="text-muted"></span></label>
+                                    <input type="text" class="form-control" name="address" required>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5 mb-3">
+                                        <label>Province</label>
+                                        <input type="text" class="form-control" name="province" required>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label>Province</label>
+                                        <input type="text" class="form-control" name="country" required>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label>Postal Code</label>
+                                        <input type="text" class="form-control" name="postalCode" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/close script--->
                             <hr>
-                        </div>
-                        <div>
                             <h4>Payment</h4>
                             <div class="d-block my-3">
                                 <div class="custom-control custom-radio">
-                                    <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+                                    <input id="credit" name="paymentMethod" value="Credit Card" type="radio" class="custom-control-input" checked required>
                                     <label class="custom-control-label" for="credit">Credit card</label>
                                 </div>
                                 <div class="custom-control custom-radio">
-                                    <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+                                    <input id="debit" name="paymentMethod" value="Debit Card" type="radio" class="custom-control-input" required>
                                     <label class="custom-control-label" for="debit">Debit card</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
-                                    <label class="custom-control-label" for="paypal">PayPal</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="cc-name">Name on card</label>
-                                    <input type="text" class="form-control" id="cc-name" required>
+                                    <input type="text" class="form-control" id="cc-name" name="cc-name" required>
                                     <small class="text-muted">Full name as displayed on card</small>
-
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="cc-number">Credit card number</label>
-                                    <input type="text" class="form-control" id="cc-number" required>
-
+                                    <input type="text" class="form-control" id="cc-number" name="cc-number" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-3 mb-3">
                                     <label for="cc-expiration">Expiration</label>
-                                    <input type="text" class="form-control" id="cc-expiration" required>
-
-
+                                    <input type="text" class="form-control" id="cc-expiration" name="cc-expiration" required>
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="cc-cvv">CVV</label>
-                                    <input type="text" class="form-control" id="cc-cvv"  required>
+                                    <input type="text" class="form-control" id="cc-cvv"  name="cc-cvv" required>
                                 </div>
                             </div>
-                        </div>
-                        <div class="mb-3">
-                            <hr>
-                            <input type="submit" class="btn btn-primary btn-lg btn-block" >Payment
-                        </div>
+                            <button type="submit" class="mb-3 btn btn-primary btn-lg btn-block">Payment</button>
+                        </div>  
                     </form>
-                </div>
-            </div>
+            </div><!--col-md-8-->
         </div>
-        <script>
-            function changeAddr(type) {
-                if (type === 'myAddress') {
-                    document.getElementById('myAddress').hidden = false;
-                    document.getElementById('newAddress').hidden = true;
-                } else {
-                    document.getElementById('myAddress').hidden = true;
-                    document.getElementById('newAddress').hidden = false;
-                }
+    </div>
+    <script>
+        function changeAddr(type) {
+            if (type === 'myAddress') {
+                document.getElementById('myAddress').hidden = false;
+                document.getElementById('newAddress').hidden = true;
+            } else {
+                document.getElementById('myAddress').hidden = true;
+                document.getElementById('newAddress').hidden = false;
             }
-        </script>                            
+        }
+    </script>                            
 
-    </body>
+</body>
 </html>
