@@ -53,11 +53,14 @@ public class PaymentServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        String pay = request.getParameter("pay");
-        if (pay != null) {
+        request.setCharacterEncoding("UTF-8");
+        String addr = request.getParameter("TypeOfAddr");
+        System.out.println("--------addr : "+addr);
+        if (addr != null) {
+            String address = getOrderAddress(request);
             Account acc = (Account) session.getAttribute("account");
             Cart cart = (Cart) session.getAttribute("cart");
-            Orders orders = new Orders(new Date(),"This place",7,cart.getTotalNetPrice(),acc);
+            Orders orders = new Orders(new Date(),address ,7,cart.getTotalNetPrice(),acc);
             OrdersJpaController oCtrl = new OrdersJpaController(utx, emf);
             OrderDetailJpaController odCtrl = new OrderDetailJpaController(utx, emf);
             AccountJpaController aCtrl = new AccountJpaController(utx, emf);
@@ -81,7 +84,8 @@ public class PaymentServlet extends HttpServlet {
                 }
                 System.out.println("<<<<<<<<ALL Order Detail Finish>>>>>>>>>>");
                 session.removeAttribute("cart");
-                request.setAttribute("message", "การซื้อสินค้าเสร็จสมบูรณ์ สินค้าจะถูกจัดส่งเมื่อ "+o.getShippeddate().toString());
+                String shipDate = o.getShippeddate().getDate()+"/"+o.getShippeddate().getMonth()+"/"+o.getShippeddate().getYear();
+                request.setAttribute("message", "การซื้อสินค้าเสร็จสมบูรณ์ สินค้าจะถูกจัดส่งเมื่อ "+shipDate);
             } catch (Exception ex) {
                 Logger.getLogger(PaymentServlet.class.getName()).log(Level.SEVERE, null, ex);
                 request.setAttribute("message", "การสั่งซื้อไม่สำเร็จกรุณาลองใหม่อีกครั้ง");
@@ -131,4 +135,19 @@ public class PaymentServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    public static String getOrderAddress(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        String addr = request.getParameter("TypeOfAddr");
+        String address;
+        if(addr.equals("MyAddress")){
+            Account acc = (Account) session.getAttribute("account");
+            address=acc.getProvince()+", "+acc.getCountry()+" "+acc.getPostalcode();
+        }else{
+            String province = request.getParameter("province");
+            String country = request.getParameter("country");
+            String postalCode = request.getParameter("postalCode");
+            address=province+", "+country+" "+postalCode;
+        }
+        return address;
+    }
 }
