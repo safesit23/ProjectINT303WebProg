@@ -3,8 +3,9 @@ import model.Orders;
 
 public class Test {
     public static void main(String[] args) {
-        Orders orders = new Orders(new Date(),"This place",7,2000,null);
-        System.out.println("----------\n\nOrders="+orders);
+        String price = "1000,2000";
+        String[] p = price.split(",");
+        System.out.println(p[0]+" and "+p[1]);
 	  
     }
 }
