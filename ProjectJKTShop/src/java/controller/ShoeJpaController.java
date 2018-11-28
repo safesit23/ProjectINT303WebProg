@@ -326,4 +326,15 @@ public class ShoeJpaController implements Serializable {
         }
     }
     
+    public List<Shoe> findShoeByColor(String color){
+        EntityManager em = getEntityManager();
+        try{
+            Query query = em.createNamedQuery("Shoe.findByColor");
+            query.setParameter("color", "%"+color.toLowerCase()+"%");
+            return query.getResultList();
+        }finally{
+            em.close();
+        }
+    }
+    
 }   

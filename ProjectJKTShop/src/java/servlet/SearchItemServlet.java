@@ -46,6 +46,7 @@ public class SearchItemServlet extends HttpServlet {
         String gender = request.getParameter("gender");
         String shoename = request.getParameter("shoename");
         String pricetext = request.getParameter("price");
+        String color = request.getParameter("color");
         ShoeJpaController shoeCtrl = new ShoeJpaController(utx, emf);
         List<Shoe> shoeList;
         if (brand != null) {
@@ -63,6 +64,9 @@ public class SearchItemServlet extends HttpServlet {
             int priceMax = Integer.valueOf(p[1]);
             System.out.println("---------------------------\nList by Price:"+priceMin+" to "+priceMax);
             shoeList = shoeCtrl.findShoeByPrice(priceMin, priceMax);
+        } else if (color!=null){
+            System.out.println("---------------------------\nList by color:"+color);
+            shoeList = shoeCtrl.findShoeByColor(color);
         } else {
             shoeList = shoeCtrl.findShoeEntities();
         }
