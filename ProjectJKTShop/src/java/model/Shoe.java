@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Shoe.findAll", query = "SELECT s FROM Shoe s")
     , @NamedQuery(name = "Shoe.findByShoeid", query = "SELECT s FROM Shoe s WHERE s.shoeid = :shoeid")
-    , @NamedQuery(name = "Shoe.findByShoename", query = "SELECT s FROM Shoe s WHERE s.shoename = :shoename")
+    , @NamedQuery(name = "Shoe.findByShoename", query = "SELECT s FROM Shoe s WHERE upper(s.shoename) like :shoename")
     , @NamedQuery(name = "Shoe.findByColor", query = "SELECT s FROM Shoe s WHERE s.color = :color")
     , @NamedQuery(name = "Shoe.findByShoetype", query = "SELECT s FROM Shoe s WHERE s.shoetype = :shoetype")
     , @NamedQuery(name = "Shoe.findByShoetype2", query = "SELECT s FROM Shoe s WHERE upper(s.shoetype2) like :shoetype2")

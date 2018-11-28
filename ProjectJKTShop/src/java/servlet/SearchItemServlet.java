@@ -44,6 +44,8 @@ public class SearchItemServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String brand = request.getParameter("brand");
         String gender = request.getParameter("gender");
+        String shoename = request.getParameter("shoename");
+        String price = request.getParameter("price");
         ShoeJpaController shoeCtrl = new ShoeJpaController(utx, emf);
         List<Shoe> shoeList;
         if (brand != null) {
@@ -52,6 +54,12 @@ public class SearchItemServlet extends HttpServlet {
         } else if (gender != null) {
             System.out.println("---------------------------\nList by Gender:"+gender);
             shoeList = shoeCtrl.findShoeByGender(gender);
+        } else if (shoename!=null){
+            System.out.println("---------------------------\nList by shoename:"+shoename);
+            shoeList = shoeCtrl.findByShoename(shoename);
+        } else if (price!=null){
+            System.out.println("---------------------------\nList by Price:"+price);
+            shoeList = shoeCtrl.findByShoename(shoename);
         } else {
             shoeList = shoeCtrl.findShoeEntities();
         }
