@@ -56,6 +56,10 @@
         <servlet-name>HistoryDetailsServlet</servlet-name>
         <servlet-class>servlet.HistoryDetailsServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AccountServlet</servlet-name>
+        <servlet-class>servlet.AccountServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>HistoryDetailsServlet</servlet-name>
         <url-pattern>/HistoryDetailsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AccountServlet</servlet-name>
+        <url-pattern>/AccountServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
