@@ -44,6 +44,7 @@ public class RegisterServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         if (checkParameter(request)) {
             String username = request.getParameter("username");
             AccountJpaController aCtrl = new AccountJpaController(utx, emf);
