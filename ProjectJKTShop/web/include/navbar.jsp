@@ -61,7 +61,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="material-icons md-light">person</i>${account.nickname}</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="Account.jsp">Account</a>
+                                <a class="dropdown-item" href="AccountServlet">Account</a>
                                 <a class="dropdown-item" href="HistoryServlet">History</a>
                                 <a class="dropdown-item" href="LogoutServlet">Logout</a>
                             </div>
