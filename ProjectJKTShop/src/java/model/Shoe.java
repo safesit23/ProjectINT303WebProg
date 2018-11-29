@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Shoe.findByShoename", query = "SELECT s FROM Shoe s WHERE upper(s.shoename) like :shoename")
     , @NamedQuery(name = "Shoe.findByColor", query = "SELECT s FROM Shoe s WHERE lower(s.color) like :color")
     , @NamedQuery(name = "Shoe.findByShoetype", query = "SELECT s FROM Shoe s WHERE s.shoetype = :shoetype")
-    , @NamedQuery(name = "Shoe.findByShoetype2", query = "SELECT s FROM Shoe s WHERE upper(s.shoetype2) like :shoetype2")
+    , @NamedQuery(name = "Shoe.findByShoetype2", query = "SELECT s FROM Shoe s WHERE upper(s.shoetype2) = :shoetype2")
     , @NamedQuery(name = "Shoe.findByBrand", query = "SELECT s FROM Shoe s WHERE lower(s.brand)like :brand")
     , @NamedQuery(name = "Shoe.findByPrice", query = "SELECT s FROM Shoe s WHERE s.price >= :priceMin AND s.price <= :priceMax")})
 public class Shoe implements Serializable {

@@ -296,7 +296,7 @@ public class ShoeJpaController implements Serializable {
         EntityManager em = getEntityManager();
         try{
             Query query = em.createNamedQuery("Shoe.findByShoetype2");
-            query.setParameter("shoetype2", "%"+productGender+"%");
+            query.setParameter("shoetype2", productGender);
             return query.getResultList();
         }finally{
             em.close();
