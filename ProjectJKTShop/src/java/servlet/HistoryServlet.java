@@ -41,9 +41,10 @@ UserTransaction utx;
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         System.out.println("-------HistoryServlet-----");
+        session.removeAttribute("history");
         Account acc = (Account) session.getAttribute("account");
         List<Orders> history = acc.getOrdersList();
-        request.setAttribute("history", history);
+        session.setAttribute("history", history);
         request.getServletContext().getRequestDispatcher("/History.jsp").forward(request, response);
     }
 
