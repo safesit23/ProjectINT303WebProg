@@ -4,6 +4,7 @@
     Author     : jatawatsafe
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -67,12 +68,14 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label>Password<sup> *</sup></label>
-                                <input type="password" class="form-control" name="password" required>
+                                <input id="password" type="password" class="form-control" name="password" required>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label>Confirm Password<sup> *</sup></label>
-                                <input type="password" class="form-control" name="confirmPassword" required>
+                                <input id="confirmPassword" type="password" class="form-control" name="confirmPassword" required>
+                                <small id="helpPassword" class="form-text text-muted"></small>
                             </div>
+                            
                         </div>
 
                         <hr>
@@ -94,12 +97,38 @@
                                 <input type="text" class="form-control" name="postalCode">
                             </div>
                         </div>
-                        <button type="submit" class="mt-4 mb-4 btn btn-primary btn-lg btn-block">Sign Up</button>
+                        <button id="btnregister" type="submit" class="mt-4 mb-4 btn btn-primary btn-lg btn-block">Sign Up</button>
                     </form>
 
                 </div><!--col-md-8-->
             </div><!--Row-->
+            <c:if test="${messageRegister!=null}">
+                <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+                    ${messageRegister}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </c:if>
         </div><!--Container-->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"> </script>
+        
+        <script>
+            $(document).ready(function(){
+            
+                
+                    $("#confirmPassword").keyup(function(){
+                        if($("#confirmPassword").val() !== $("#password").val()){
+                          document.getElementById("btnregister").disabled = true;
+                          document.getElementById("helpPassword").innerHTML = "รหัสไม่ตรงกัน";
+                        } else {
+                            document.getElementById("btnregister").disabled = false;
+                            document.getElementById("helpPassword").innerHTML = "";
+                        }
+                        
+                    });
+            });
+            </script>
         <jsp:include page="include/footer.jsp"/>
     </body>
 </html>
