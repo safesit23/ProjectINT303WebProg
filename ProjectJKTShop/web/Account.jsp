@@ -32,49 +32,45 @@
                             <c:when test="${editAccount!=null}">
                                 <div class="col-md-12 mb-4">
                                     <form  action="AccountServlet" method="post">
-                                        <h2>ข้อมูลทั่วไป</h2>
-                                        <hr>
-                                        <div class="form-row mb-4">
-                                            <div class="col-md-4 mb-3">
-                                                <label>ชื่อ</label>
-                                                <input type="text" class="form-control"  value="${account.firstname}" required>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                <label>นามสกุล</label>
-                                                <input type="text" class="form-control" value="${account.lastname}" required>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                <label>ชื่อเล่น</label>
-                                                <input type="text" class="form-control" value="${account.nickname}" required>
-                                            </div>
-                                            
-                                            <div class="col-md-4 mb-3">
-                                                <label>เบอร์โทรศัพท์</label>
-                                                <input type="tel" class="form-control" value="${account.phone}" required>
-                                            </div>
+                                        <div class="col-md-12 mb-4">
+                                            <h2>ข้อมูลทั่วไป</h2>
+                                            <hr>
+                                            <h5>ชื่อ: ${account.firstname}  <span class="pr-4"></span>นามสกุล: ${account.lastname}</h5>
+                                            <h5>ชื่อเล่น: ${account.nickname}</h5>
+                                            <h5>เพศ: 
+                                                <c:choose>
+                                                    <c:when test="${account.sex=='M'}">ชาย</c:when>
+                                                    <c:otherwise>หญิง</c:otherwise>
+                                                </c:choose>
+                                            </h5>
+                                            <h5>วันเกิด: <fmt:formatDate value="${account.dob}" type = "date" /> </h5>
+                                            <h5>เบอร์โทรศัพท์: ${account.phone}</h5>
 
-                                            <div class="col-md-4 mb-3">
-                                                <label>วันเกิด</label>
-                                                <fmt:formatDate var="parsedDate" value="${account.dob}" pattern="yyyy-MM-dd" />
-                                                <input class="form-control" type="date"  name="dob" value="${parsedDate}" required>
-                                            </div>
-                                            
-                                            <div class="col-md-4 mb-3">
-                                                <label>Gender<sup> *</sup></label>
-                                                <div>
-                                                    <input class="ml-3 mr-3" type="radio"  name="sex" value="M" <c:if test="${account.sex=='M'}">checked</c:if>>Male
-                                                    <input class="ml-3 mr-3" type="radio"  name="sex" value="F" <c:if test="${account.sex=='F'}">checked</c:if>required>Female
-                                                </div>
-                                            </div>
-
-                                        </div>
+                                        </div><!--Closed Row-->
                                         <h2>ที่อยู่</h2>
                                         <hr>
+                                        <div class="form-row mb-4">
+                                            <div class="col-md-12 mb-3">
+                                                <label>ที่อยู่</label>
+                                                <input type="text" class="form-control" name="address" value="${account.address}">
+                                            </div>
 
+                                            <div class="col-md-5 mb-3">
+                                                <label>Province</label>
+                                                <input type="text" class="form-control" name="province" value="${account.province}">
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <label>Province</label>
+                                                <input type="text" class="form-control" name="country" value="${account.country}">
+                                            </div>
+                                            <div class="col-md-3 mb-3">
+                                                <label>Postal Code</label>
+                                                <input type="text" class="form-control" name="postalCode" value="${account.postalcode}">
+                                            </div>
 
-
-
-
+                                        </div><!--Closed Row-->
+                                        <input type="text" name="editData" value="true" hidden>
+                                        <button type="submit" class="mt-4 mb-4 btn btn-outline-danger btn-lg ">Save</button>
                                     </form>
                                 </div>
                             </c:when>
