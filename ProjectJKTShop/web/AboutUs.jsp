@@ -16,7 +16,7 @@
         <jsp:include page="include/navbar.jsp"/>
         <div class="container jktcontent" style="min-height: 550px;">
             <div class="row">
-                <div class="col-6">
+                <div class="col-6" style="background-color: white">
                     <h1>Contact</h1>
                     <div>
                         <h3>
@@ -35,38 +35,35 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12">
+                <div class="col-md-12 col-sm-12">
                     <h1>CO-FOUNDER @JKT Shop</h1>
-                    <div class="row">
-
-                        <div class="col-6">
-                            <div>
-                                <h3>Jatawat Xie</h3>
-                                <p>60130500009</p>
-                                <p>jatawat.xie@mail.kmutt.ac.th</p>
-                            </div>
-                        </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div>
+                        <h3>Jatawat Xie</h3>
+                        <p>60130500009</p>
+                        <p>jatawat.xie@mail.kmutt.ac.th</p>
                     </div>
-                    <div class="col-6">
-                        <div>
-                            <h3>Thirajed Jaipetch</h3>
-                            <p>60130500035</p>
-                            <p>Thirajed.jed@mail.kmutt.ac.th</p>
-                        </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div>
+                        <h3>Thirajed Jaipetch</h3>
+                        <p>60130500035</p>
+                        <p>Thirajed.jed@mail.kmutt.ac.th</p>
                     </div>
-                    <div class="col-6">
-                        <div>
-                            <h3>Kachain Thitisirisawas</h3>
-                            <p>60130500007</p>
-                            <p>kachain.xx@mail.kmutt.ac.th</p>
-                        </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div>
+                        <h3>Kachain Thitisirisawas</h3>
+                        <p>60130500007</p>
+                        <p>kachain.xx@mail.kmutt.ac.th</p>
                     </div>
-                    <div class="col-6">
-                        <div>
-                            <h3>INT 303 Web Programming</h3>
-                            <h3>School of Information Technology</h3>
-                            <h3>King Mongkut's University of Technology Thonburi</h3>
-                        </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div>
+                        <h3>INT 303 Web Programming</h3>
+                        <h3>School of Information Technology</h3>
+                        <h3>King Mongkut's University of Technology Thonburi</h3>
                     </div>
                 </div>
             </div>
