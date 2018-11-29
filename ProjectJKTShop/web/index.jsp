@@ -64,23 +64,23 @@
                     <div class="card" style="width: 18rem;">
                         <img class="card-img-top" src="images/content/pm1.png" alt="Promote">
                         <div class="card-body">
-                            <p class="card-text text-center">CODE: NEW100<br> เมื่อมียอดสั่งซื้อ 11000 ขึ้นไป</p>
+                            <p class="card-text text-center">CODE: NEW100<br> เมื่อมียอดสั่งซื้อ 1500 ขึ้นไป</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3 offset-1">
                     <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="images/content/pm1.png" alt="Promote">
+                        <img class="card-img-top" src="images/content/pm2.png" alt="Promote">
                         <div class="card-body">
-                            <p class="card-text text-center">CODE: NEW100<br> เมื่อมียอดสั่งซื้อ 11000 ขึ้นไป</p>
+                            <p class="card-text text-center">CODE: NEW200<br> เมื่อมียอดสั่งซื้อ 2500 ขึ้นไป</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3 offset-1">
                     <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="images/content/pm1.png" alt="Promote">
+                        <img class="card-img-top" src="images/content/pm3.png" alt="Promote">
                         <div class="card-body">
-                            <p class="card-text text-center">CODE: NEW100<br> เมื่อมียอดสั่งซื้อ 11000 ขึ้นไป</p>
+                            <p class="card-text text-center">CODE: NEW300<br> เมื่อมียอดสั่งซื้อ 3000 ขึ้นไป</p>
                         </div>
                     </div>
                 </div>
