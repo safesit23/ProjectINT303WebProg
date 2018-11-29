@@ -70,6 +70,8 @@ public class SearchItemServlet extends HttpServlet {
         } else {
             shoeList = shoeCtrl.findShoeEntities();
         }
+        int numOfShoeList =shoeList.size();
+        session.setAttribute("numOfShoeList", numOfShoeList);
         session.setAttribute("shoeList", shoeList);
         response.sendRedirect("AboutProduct.jsp");
     }

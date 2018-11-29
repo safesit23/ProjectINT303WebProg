@@ -60,7 +60,7 @@
                         </select>
                     </form>
                     <form action="SearchItemServlet" method="post">
-                    <p class="lead">Color</p>
+                        <p class="lead">Color</p>
                         <select class="custom-select mb-4" name="color" onchange="this.form.submit()">
                             <option>Select Color</option>
                             <option value="black">Black</option>
@@ -90,9 +90,14 @@
                             </div>
                             <!-- /end 1 card-->
                         </c:forEach>
-
                     </div> <!--End Row Product-->
+                    <c:if test="${numOfShoeList==0}">
+                        <div class="alert alert-danger" role="alert">
+                            ค้นหาสินค้าไม่พบ
+                        </div>
+                    </c:if>
                 </div> <!--end col md 9-->
+
             </div> <!-- /.row -->
         </div> <!--End Container-->
         <jsp:include page="include/footer.jsp"/>
