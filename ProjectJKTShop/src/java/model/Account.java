@@ -153,6 +153,13 @@ public class Account implements Serializable {
         this.phone = phone;
         this.activatekey = activatekey;
     }
+    
+    public void editAccount(String address, String province, String postalCode, String country){
+        this.address = address;
+        this.province = province;
+        this.postalcode = postalCode;
+        this.country = country;
+    }
 
     public Integer getAccountid() {
         return accountid;
