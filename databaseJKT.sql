@@ -417,5 +417,7 @@ CREATE TABLE voucher (
 );
 
 insert  into voucher(voucherId,voucherValue,minSpend) values
-('NEW100',100,1500);
+('JKT100',100,1500);
+('JKT200',200,2500);
+('JKT300',300,3000);
 /*end of statements */
