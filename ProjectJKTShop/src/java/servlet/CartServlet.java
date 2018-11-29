@@ -5,30 +5,18 @@
  */
 package servlet;
 
-import controller.ShoeJpaController;
 import java.io.IOException;
-import java.util.List;
-import javax.annotation.Resource;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceUnit;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.transaction.UserTransaction;
-import model.Shoe;
 
 /**
  *
  * @author jatawatsafe
  */
-public class AboutProductServlet extends HttpServlet {
-@PersistenceUnit(unitName = "JKTShopPU")
-EntityManagerFactory emf;
+public class CartServlet extends HttpServlet {
 
-@Resource
-UserTransaction utx;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -40,13 +28,9 @@ UserTransaction utx;
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        ShoeJpaController shoeCtrl = new ShoeJpaController(utx, emf);
-        List<Shoe> shoeList = shoeCtrl.findShoeEntities();
-        session.setAttribute("shoeList", shoeList);
-        request.setAttribute("AboutProductPage", "AboutProduct");
-        getServletContext().getRequestDispatcher("/AboutProduct.jsp").forward(request, response);
-    }
+        request.setAttribute("CartPage", "CartPage");
+        request.getServletContext().getRequestDispatcher("/Cart.jsp").forward(request, response);
+        }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

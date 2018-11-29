@@ -23,7 +23,7 @@
     <div class="text-footer">
         <br>
         <p>&copy; 2018 JKT Online Store </p>
-        <div class="linkFooter"><a>About</a>  |  <a href="contact.jsp">CONTACT</a>   |  <a>Help</a>  |  <a>Privacy Terms of Service</a></div>
+        <div class="linkFooter"><a>About</a>  |  <a href="AboutUs.jsp">CONTACT</a>   |  <a>Help</a>  |  <a>Privacy Terms of Service</a></div>
         <br>
     </div>
 </footer>
