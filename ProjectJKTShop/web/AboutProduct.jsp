@@ -79,7 +79,7 @@
                             <div class="col-lg-4 col-md-4 col-sm-6 portfolio-item">
                                 <div class="card h-100">
                                     <c:set var="shoeid" value="${shoe.shoeid}" />
-                                    <img class="card-img-top" src="images/shoes/${fn:substringBefore(shoeid, "SH")}_01.jpg" alt="${fn:substringBefore(shoeid, "SH")}_01|${shoe.shoename}">
+                                    <img class="card-img-top" src="images/shoes/${fn:substringBefore(shoeid, "SH")}_00.jpg" alt="${fn:substringBefore(shoeid, "SH")}_00|${shoe.shoename}">
                                     <div class="card-body">
                                         <h5 class="card-title">
                                             <a href="ProductDetailsServlet?shoeId=${shoe.shoeid}">${shoe.shoename}</a>
