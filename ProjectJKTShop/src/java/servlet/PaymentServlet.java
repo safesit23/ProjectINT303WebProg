@@ -84,7 +84,7 @@ public class PaymentServlet extends HttpServlet {
                 }
                 System.out.println("<<<<<<<<ALL Order Detail Finish>>>>>>>>>>");
                 session.removeAttribute("cart");
-                String shipDate = o.getShippeddate().getDate()+"/"+o.getShippeddate().getMonth()+"/"+o.getShippeddate().getYear();
+                String shipDate = o.getShippeddate().getDate()+"/"+o.getShippeddate().getMonth()+"/"+(o.getShippeddate().getYear()+1900);
                 request.setAttribute("message", "การซื้อสินค้าเสร็จสมบูรณ์ สินค้าจะถูกจัดส่งเมื่อ "+shipDate);
             } catch (Exception ex) {
                 Logger.getLogger(PaymentServlet.class.getName()).log(Level.SEVERE, null, ex);
