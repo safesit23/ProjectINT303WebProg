@@ -34,20 +34,39 @@
                                     <form  action="AccountServlet" method="post">
                                         <h2>ข้อมูลทั่วไป</h2>
                                         <hr>
-                                        <div class="form-row">
+                                        <div class="form-row mb-4">
                                             <div class="col-md-4 mb-3">
                                                 <label>ชื่อ</label>
-                                                <input type="text" class="form-control"  value="Mark" required>
+                                                <input type="text" class="form-control"  value="${account.firstname}" required>
                                             </div>
                                             <div class="col-md-4 mb-3">
                                                 <label>นามสกุล</label>
-                                                <input type="text" class="form-control" value="Otto" required>
+                                                <input type="text" class="form-control" value="${account.lastname}" required>
                                             </div>
                                             <div class="col-md-4 mb-3">
                                                 <label>ชื่อเล่น</label>
-                                                <input type="text" class="form-control" value="Otto" required>
+                                                <input type="text" class="form-control" value="${account.nickname}" required>
                                             </div>
                                             
+                                            <div class="col-md-4 mb-3">
+                                                <label>เบอร์โทรศัพท์</label>
+                                                <input type="tel" class="form-control" value="${account.phone}" required>
+                                            </div>
+
+                                            <div class="col-md-4 mb-3">
+                                                <label>วันเกิด</label>
+                                                <fmt:formatDate var="parsedDate" value="${account.dob}" pattern="yyyy-MM-dd" />
+                                                <input class="form-control" type="date"  name="dob" value="${parsedDate}" required>
+                                            </div>
+                                            
+                                            <div class="col-md-4 mb-3">
+                                                <label>Gender<sup> *</sup></label>
+                                                <div>
+                                                    <input class="ml-3 mr-3" type="radio"  name="sex" value="M" <c:if test="${account.sex=='M'}">checked</c:if>>Male
+                                                    <input class="ml-3 mr-3" type="radio"  name="sex" value="F" <c:if test="${account.sex=='F'}">checked</c:if>required>Female
+                                                </div>
+                                            </div>
+
                                         </div>
                                         <h2>ที่อยู่</h2>
                                         <hr>
