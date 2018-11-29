@@ -5,20 +5,32 @@
  */
 package servlet;
 
+import controller.AccountJpaController;
+import controller.exceptions.NonexistentEntityException;
+import controller.exceptions.RollbackFailureException;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.Resource;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.transaction.UserTransaction;
+import model.Account;
 
 /**
  *
  * @author jatawatsafe
  */
 public class AccountServlet extends HttpServlet {
-
+@PersistenceUnit(unitName = "JKTShopPU")
+EntityManagerFactory emf;
+@Resource
+UserTransaction utx;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -32,14 +44,40 @@ public class AccountServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         String editAccount = request.getParameter("editAccount");
+        String editData = request.getParameter("editData");
+        AccountJpaController aCtrl = new AccountJpaController(utx, emf);
         if(editAccount!=null){
-            if(false){
-                
-            }else{
-                request.setAttribute("editAccount", "true");
-                request.getServletContext().getRequestDispatcher("/Account.jsp").forward(request, response);
+            System.out.println("-------Edit Account");
+            request.setAttribute("editAccount", "true");
+            request.getServletContext().getRequestDispatcher("/Account.jsp").forward(request, response);
+            return;
+        }else if(editData !=null){
+            System.out.println("-----Edit Data");
+            Account accSession = (Account) session.getAttribute("account");
+            Account account = aCtrl.findAccount(accSession.getAccountid());
+            if(account !=null){
+                System.out.println("-----account from DB");
+                String address = request.getParameter("address");
+                String province = request.getParameter("province");
+                String postalCode = request.getParameter("postalCode");
+                String country = request.getParameter("country");
+                account.editAccount(address, province, postalCode, country);
+                try {
+                    aCtrl.edit(account);
+                    session.setAttribute("account", account);
+                    System.out.println("-----edit profile success");
+                    response.sendRedirect("AccountServlet");
+                    return;
+                } catch (NonexistentEntityException ex) {
+                    Logger.getLogger(AccountServlet.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (RollbackFailureException ex) {
+                    Logger.getLogger(AccountServlet.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception ex) {
+                    Logger.getLogger(AccountServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                System.out.println("-----edit profile not success");
             }
-            
+            request.getServletContext().getRequestDispatcher("/Account.jsp");
         }else{
             response.sendRedirect("Account.jsp");
         }
