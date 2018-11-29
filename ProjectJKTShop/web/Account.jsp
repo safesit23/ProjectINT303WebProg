@@ -36,7 +36,7 @@
                                             <h2>ข้อมูลทั่วไป</h2>
                                             <hr>
                                             <h5>ชื่อ: ${account.firstname}  <span class="pr-4"></span>นามสกุล: ${account.lastname}</h5>
-                                            <h5>ชื่อเล่น: ${account.nickname}</h5>
+                                            
                                             <h5>เพศ: 
                                                 <c:choose>
                                                     <c:when test="${account.sex=='M'}">ชาย</c:when>
@@ -79,7 +79,7 @@
                                     <h2>ข้อมูลทั่วไป</h2>
                                     <hr>
                                     <h5>ชื่อ: ${account.firstname}  <span class="pr-4"></span>นามสกุล: ${account.lastname}</h5>
-                                    <h5>ชื่อเล่น: ${account.nickname}</h5>
+                                    
                                     <h5>เพศ: 
                                         <c:choose>
                                             <c:when test="${account.sex=='M'}">ชาย</c:when>
