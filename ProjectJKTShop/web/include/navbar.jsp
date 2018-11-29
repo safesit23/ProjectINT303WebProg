@@ -24,7 +24,7 @@
             var $nav = $(".navbar-brand");
             $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
             if ($(this).scrollTop() > $nav.height()) {
-                document.getElementById("logoSR").innerHTML = '<img src="images/content/logo_3.svg" style="margin-top: -10px; margin-right: -15px; width: 45px;" alt="logo">';
+                document.getElementById("logoSR").innerHTML = '<img src="images/content/logo_2.svg" style="margin-top: -10px; margin-right: -15px; width: 45px;" alt="logo">';
             } else {
                 document.getElementById("logoSR").innerHTML = '<img src="images/content/logo_2.svg" style="margin-top: -10px; margin-right: -15px; width: 45px;" alt="logo">';
             }
