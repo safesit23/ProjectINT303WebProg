@@ -25,11 +25,11 @@
                         <div class="mt-3">
                             <!--TypeOfAddr: My Addr-->
                             <div class="custom-control custom-radio">
-                                <input type="radio" id="MyAddress" name="TypeOfAddr" value="MyAddress"  class="custom-control-input" onclick="changeAddr('myAddress')">
+                                <input type="radio" id="MyAddress" name="TypeOfAddr" value="MyAddress"  class="custom-control-input" onclick="changeAddr('myAddress')" checked>
                                 <label class="custom-control-label" for="MyAddress">My Address</label>
                             </div>
                             <!--Use Javascript to Show-->
-                            <div id="myAddress" class="mt-2 mb-2">
+                            <div id="myAddress" class="mt-2 mb-2" hidden>
                                 <span>Address: ${account.address} , ${account.province} , ${account.country} ${account.postalcode}</span>
                             </div>
                             
@@ -67,7 +67,7 @@
                             <h4>Payment</h4>
                             <div class="d-block my-3">
                                 <div class="custom-control custom-radio">
-                                    <input id="credit" name="paymentMethod" value="Credit Card" type="radio" class="custom-control-input" checked required>
+                                    <input id="credit" name="paymentMethod" value="Credit Card" type="radio" class="custom-control-input" required>
                                     <label class="custom-control-label" for="credit">Credit card</label>
                                 </div>
                                 <div class="custom-control custom-radio">
