@@ -92,54 +92,69 @@
                 <c:if test="${account!=null}">
                     <c:choose>
                         <c:when test="${account.sex=='M'}">
+                            <div class="col-md-12"><h1>RECOMMENDED MEN</h1></div>
+                            
                             <div class="col-md-3">
                                 <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="images/content/pm1.png" alt="Promote">
+                                    <img class="card-img-top" src="images/shoes/FL039_00.jpg" alt="FL039">
                                     <div class="card-body">
-                                        <p class="card-text text-center">MALE</p>
+                                        <h5 class="card-title">
+                                            <a href="ProductDetailsServlet?shoeId=FL039SH200">Fila_Tyler</a>
+                                        </h5>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3 offset-1">
                                 <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="images/content/pm1.png" alt="Promote">
+                                    <img class="card-img-top" src="images/shoes/AD011_00.jpg" alt="AD011">
                                     <div class="card-body">
-                                        <p class="card-text text-center">MALE</p>
+                                        <h5 class="card-title">
+                                            <a href="ProductDetailsServlet?shoeId=AD011SH200">Adidas_Ultraboost_LTD</a>
+                                        </h5>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3 offset-1">
                                 <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="images/content/pm1.png" alt="Promote">
+                                    <img class="card-img-top" src="images/shoes/AD005_00.jpg" alt="AD005SH200">
                                     <div class="card-body">
-                                        <p class="card-text text-center">MALE</p>
+                                        <h5 class="card-title">
+                                            <a href="ProductDetailsServlet?shoeId=AD005SH200">Adidas_Adilette_Comfort</a>
+                                        </h5>
                                     </div>
                                 </div>
                             </div>
 
                         </c:when>
                         <c:otherwise>
+                            <div class="col-md-12"><h1>RECOMMENDED WOMEN</h1></div>
                             <div class="col-md-3">
                                 <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="images/content/pm1.png" alt="Promote">
+                                    <img class="card-img-top" src="images/shoes/NI001_00.jpg" alt="NI001">
                                     <div class="card-body">
-                                        <p class="card-text text-center">FEMALE</p>
+                                        <h5 class="card-title">
+                                            <a href="ProductDetailsServlet?shoeId=NI001SH200">Nike_Epic_React_Flyknit</a>
+                                        </h5>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3 offset-1">
                                 <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="images/content/pm1.png" alt="Promote">
+                                    <img class="card-img-top" src="images/shoes/NI099.jpg" alt="NI099">
                                     <div class="card-body">
-                                        <p class="card-text text-center">FEMALE</p>
+                                        <h5 class="card-title">
+                                            <a href="ProductDetailsServlet?shoeId=NI099SH200">Nike_Air_Zoom_Pegasus_35_GPX_RS</a>
+                                        </h5>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3 offset-1">
                                 <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="images/content/pm1.png" alt="Promote">
+                                    <img class="card-img-top" src="images/shoes/FL007_00.jpg" alt="FL007">
                                     <div class="card-body">
-                                        <p class="card-text text-center">FEMALE</p>
+                                        <h5 class="card-title">
+                                            <a href="ProductDetailsServlet?shoeId=FL007SH200">Fila_Riley</a>
+                                        </h5>
                                     </div>
                                 </div>
                             </div>
