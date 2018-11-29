@@ -14,7 +14,7 @@
     </head>
     <body>
         <style>
-            img {
+            .avatar {
                 border-radius: 50%;
             }
         </style>
@@ -23,12 +23,9 @@
             <div class="row">
                 <div class="col-6">
                     <br>
-                    <h1>Contact</h1>
+                    <h1>Contact JKT Shop</h1>
                     <div>
-                        <br>
-                        <h1>
-                            &nbsp;&nbsp;&nbsp;&nbsp;JKT Shop
-                        </h1>
+                        
                         <br>
                         <p><h3><img src="images/content/tel.png" width="30" height="30">&nbsp; Tel : 02-303-2018</h3></p>
                         <p><h3><img src="images/content/email.png" width="30" height="30">&nbsp; Email : jktshop303@gmail.com</h3></p>
@@ -44,15 +41,18 @@
             </div>
             <br />
             <hr>
-            <div class="row">
-                <div class="col-md-12 col-sm-12">
+            <div class="col-md-12 col-sm-12 mt-3 mb-3">
                     <h1>CO-FOUNDER @JKT Shop</h1>
                 </div>
+            <div class="row mb-5">
+                
 
                 <div class="col-md-6 col-sm-12">
-                    <div class="col-4 col-8">   
-                        <img src="images/content/safe.jpg" alt="Avatar" width="200" height="200">
-                        <div>
+                    <div class="row">
+                        <div class="col-3">
+                            <img class="avatar" src="images/content/safe.jpg" alt="Avatar" width="200" height="200">
+                        </div>  
+                        <div class="col-5 offset-2">
                             <h3>Jatawat Xie</h3>
                             <p>60130500009</p>
                             <p>jatawat.xie@mail.kmutt.ac.th</p>
@@ -60,19 +60,25 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-12">
-                    <div class="col-4 col-8">   
-                        <img src="images/content/jed.jpg" alt="Avatar" width="200" height="200">
-                        <div>
+                    <div class="row">
+                        <div class="col-3">
+                            <img class="avatar" src="images/content/jed.jpg" alt="Avatar" width="200" height="200">
+                        </div>
+                        <div class="col-5 offset-2">
                             <h3>Thirajed Jaipetch</h3>
                             <p>60130500035</p>
                             <p>Thirajed.jed@mail.kmutt.ac.th</p>
                         </div>
                     </div>
                 </div>
+            </div>
+                <div class="row">
                 <div class="col-md-6 col-sm-12">
-                    <div class="col-4 col-8">   
-                        <img src="images/content/uho.jpg" alt="Avatar" width="200" height="200">
-                        <div>
+                    <div class="row">
+                        <div class="col-3">
+                            <img class="avatar" src="images/content/uho.jpg" alt="Avatar" width="200" height="200">
+                        </div>
+                        <div class="col-5 offset-2">
                             <h3>Kachain Thitisirisawas</h3>
                             <p>60130500007</p>
                             <p>kachain.xx@mail.kmutt.ac.th</p>
@@ -81,11 +87,10 @@
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <div>
-                        <br>
-                        <br>
-                        <h3>INT 303 Web Programming</h3>
-                        <h3>School of Information Technology</h3>
-                        <h3>King Mongkut's University of Technology Thonburi</h3>
+
+                        <h3>INT 303 Web Programming<br>
+                            School of Information Technology<br>
+                            King Mongkut's University of Technology Thonburi</h3>
                     </div>
                 </div>
             </div>
