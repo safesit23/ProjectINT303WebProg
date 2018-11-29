@@ -4,6 +4,7 @@
     Author     : jatawatsafe
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -57,9 +58,96 @@
             </a>
         </div>
         <div class="container jktcontent">
-            <h1>HOMEPAGE</h1>
-            <div style="height: 100px;"></div>
-        </div>
+            <h1>What News</h1>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="images/content/pm1.png" alt="Promote">
+                        <div class="card-body">
+                            <p class="card-text text-center">CODE: NEW100<br> เมื่อมียอดสั่งซื้อ 11000 ขึ้นไป</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 offset-1">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="images/content/pm1.png" alt="Promote">
+                        <div class="card-body">
+                            <p class="card-text text-center">CODE: NEW100<br> เมื่อมียอดสั่งซื้อ 11000 ขึ้นไป</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 offset-1">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="images/content/pm1.png" alt="Promote">
+                        <div class="card-body">
+                            <p class="card-text text-center">CODE: NEW100<br> เมื่อมียอดสั่งซื้อ 11000 ขึ้นไป</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row mt-3">
+                <c:if test="${account!=null}">
+                    <c:choose>
+                        <c:when test="${account.sex=='M'}">
+                            <div class="col-md-3">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="images/content/pm1.png" alt="Promote">
+                                    <div class="card-body">
+                                        <p class="card-text text-center">MALE</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 offset-1">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="images/content/pm1.png" alt="Promote">
+                                    <div class="card-body">
+                                        <p class="card-text text-center">MALE</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 offset-1">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="images/content/pm1.png" alt="Promote">
+                                    <div class="card-body">
+                                        <p class="card-text text-center">MALE</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </c:when>
+                        <c:otherwise>
+                            <div class="col-md-3">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="images/content/pm1.png" alt="Promote">
+                                    <div class="card-body">
+                                        <p class="card-text text-center">FEMALE</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 offset-1">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="images/content/pm1.png" alt="Promote">
+                                    <div class="card-body">
+                                        <p class="card-text text-center">FEMALE</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 offset-1">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="images/content/pm1.png" alt="Promote">
+                                    <div class="card-body">
+                                        <p class="card-text text-center">FEMALE</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
+                </c:if>
+            </div>
+        </div><!--Container-->
         <jsp:include page="include/footer.jsp"/>
     </body>
 </html>
