@@ -45,6 +45,10 @@ Have 6 Table:
 
 ### Data
 
+#### Account
+- Username: test@test.com
+- Password: test
+
 #### Shoe
 - Brand: nike, adidas, fila, skechers, new balance
 - Insert `('shoeId','shoeName','color','type','type2','brand','price')`
