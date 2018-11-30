@@ -23,8 +23,8 @@ CREATE TABLE account (
 ) ;
 
 /*Data for table account */
-insert into account(username,password,firstName,lastName,nickname,sex,phone,activatekey) values 
-('test@test.com','test','FirstName','LastName','Admin','M','0123456789','activatekey');
+insert into account(username,password,firstName,lastName,nickname,sex,phone,activatekey,activatedate) values 
+('test@test.com','98f6bcd4621d373cade4e832627b4f6','FirstName','LastName','Admin','M','0123456789','activatekey','2018-11-22 11:55:58.881');
 
 
 /*********************Table structure for table shoe *********************/
