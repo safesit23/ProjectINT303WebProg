@@ -84,7 +84,7 @@ for viewing todolist that you must be done
 2. color : RED-hard, Orange-normal, Green-Easy, Violet-Important
 3. You can move card to update work
 
-### [Figma](https://www.figma.com/files/team/639718251727099957/INT303-Webprog)
+### [Figma](https://www.figma.com/file/WE4Brq9OEPCEFbZUhS0RYzwu/wirefame?node-id=0%3A1)
 for watching wireframe of this web site.
 
 ### [Google Drive](https://drive.google.com/drive/folders/1iK_DfumIu-DqvwigPUIg_xvcU_yJVufW?usp=sharing)
